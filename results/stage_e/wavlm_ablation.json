@@ -1,0 +1,31 @@
+{
+ "n": 317,
+ "frozen": {
+  "auc_pr": 0.4415,
+  "ci95": [
+   0.3956,
+   0.5066
+  ],
+  "no_skill": 0.3333,
+  "chance_auc_pr": 0.3446,
+  "chance_95pct": 0.3694
+ },
+ "partial_ft": {
+  "auc_pr": 0.5542,
+  "ci95": [
+   0.4945,
+   0.6241
+  ],
+  "no_skill": 0.3333,
+  "chance_auc_pr": 0.3446,
+  "chance_95pct": 0.3694
+ },
+ "ft_minus_frozen": {
+  "delta_macro_auc_pr": 0.1128,
+  "ci95": [
+   0.0284,
+   0.1916
+  ],
+  "p_a_not_better": 0.002
+ }
+}

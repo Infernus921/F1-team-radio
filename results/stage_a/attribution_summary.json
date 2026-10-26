@@ -1,0 +1,1052 @@
+{
+ "channels": {
+  "ALEALB01": {
+   "silk": {
+    "k": 4,
+    "n_units": 436,
+    "clusters": {
+     "ENGINEER_0": 12,
+     "ENGINEER_1": 109,
+     "ENGINEER_2": 202,
+     "DRIVER_3": 113
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 436,
+    "clusters": {
+     "ENGINEER_0": 12,
+     "ENGINEER_1": 109,
+     "ENGINEER_2": 202,
+     "DRIVER_3": 113
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 436,
+    "clusters": {
+     "DRIVER_0": 214,
+     "ENGINEER_1": 222
+    }
+   }
+  },
+  "ANTGIO01": {
+   "silk": {
+    "k": 4,
+    "n_units": 89,
+    "clusters": {
+     "DRIVER_0": 16,
+     "DRIVER_1": 4,
+     "ENGINEER_2": 30,
+     "ENGINEER_3": 39
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 89,
+    "clusters": {
+     "DRIVER_0": 16,
+     "DRIVER_1": 4,
+     "ENGINEER_2": 30,
+     "ENGINEER_3": 39
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 89,
+    "clusters": {
+     "ENGINEER_0": 85,
+     "DRIVER_1": 4
+    }
+   }
+  },
+  "BREHAR01": {
+   "silk": {
+    "k": 2,
+    "n_units": 47,
+    "clusters": {
+     "DRIVER_0": 21,
+     "ENGINEER_1": 26
+    }
+   },
+   "silk_raw": {
+    "k": 2,
+    "n_units": 47,
+    "clusters": {
+     "DRIVER_0": 21,
+     "DRIVER_1": 26
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 47,
+    "clusters": {
+     "DRIVER_0": 21,
+     "ENGINEER_1": 26
+    }
+   }
+  },
+  "CARSAI01": {
+   "silk": {
+    "k": 5,
+    "n_units": 875,
+    "clusters": {
+     "ENGINEER_0": 147,
+     "DRIVER_1": 275,
+     "ENGINEER_2": 1,
+     "ENGINEER_3": 2,
+     "ENGINEER_4": 450
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 875,
+    "clusters": {
+     "ENGINEER_0": 147,
+     "DRIVER_1": 275,
+     "ENGINEER_2": 1,
+     "ENGINEER_3": 2,
+     "ENGINEER_4": 450
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 875,
+    "clusters": {
+     "DRIVER_0": 873,
+     "ENGINEER_1": 2
+    }
+   }
+  },
+  "CHALEC01": {
+   "silk": {
+    "k": 4,
+    "n_units": 706,
+    "clusters": {
+     "DRIVER_0": 155,
+     "ENGINEER_1": 547,
+     "ENGINEER_2": 3,
+     "ENGINEER_3": 1
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 706,
+    "clusters": {
+     "DRIVER_0": 155,
+     "ENGINEER_1": 547,
+     "ENGINEER_2": 3,
+     "ENGINEER_3": 1
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 706,
+    "clusters": {
+     "DRIVER_0": 705,
+     "ENGINEER_1": 1
+    }
+   }
+  },
+  "DANKVY01": {
+   "silk": {
+    "k": 4,
+    "n_units": 87,
+    "clusters": {
+     "ENGINEER_0": 26,
+     "DRIVER_1": 24,
+     "ENGINEER_2": 36,
+     "ENGINEER_3": 1
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 87,
+    "clusters": {
+     "ENGINEER_0": 26,
+     "DRIVER_1": 24,
+     "ENGINEER_2": 36,
+     "ENGINEER_3": 1
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 87,
+    "clusters": {
+     "DRIVER_0": 86,
+     "ENGINEER_1": 1
+    }
+   }
+  },
+  "DANRIC01": {
+   "silk": {
+    "k": 6,
+    "n_units": 677,
+    "clusters": {
+     "ENGINEER_0": 70,
+     "DRIVER_1": 239,
+     "ENGINEER_2": 98,
+     "ENGINEER_3": 249,
+     "ENGINEER_4": 1,
+     "ENGINEER_5": 20
+    }
+   },
+   "silk_raw": {
+    "k": 6,
+    "n_units": 677,
+    "clusters": {
+     "ENGINEER_0": 70,
+     "DRIVER_1": 239,
+     "ENGINEER_2": 98,
+     "ENGINEER_3": 249,
+     "ENGINEER_4": 1,
+     "ENGINEER_5": 20
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 677,
+    "clusters": {
+     "ENGINEER_0": 270,
+     "DRIVER_1": 407
+    }
+   }
+  },
+  "ESTOCO01": {
+   "silk": {
+    "k": 3,
+    "n_units": 463,
+    "clusters": {
+     "ENGINEER_0": 188,
+     "ENGINEER_1": 189,
+     "DRIVER_2": 86
+    }
+   },
+   "silk_raw": {
+    "k": 3,
+    "n_units": 463,
+    "clusters": {
+     "ENGINEER_0": 188,
+     "ENGINEER_1": 189,
+     "DRIVER_2": 86
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 463,
+    "clusters": {
+     "ENGINEER_0": 274,
+     "DRIVER_1": 189
+    }
+   }
+  },
+  "FERALO01": {
+   "silk": {
+    "k": 4,
+    "n_units": 507,
+    "clusters": {
+     "ENGINEER_0": 111,
+     "ENGINEER_1": 207,
+     "DRIVER_2": 115,
+     "ENGINEER_3": 74
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 507,
+    "clusters": {
+     "ENGINEER_0": 111,
+     "ENGINEER_1": 207,
+     "DRIVER_2": 115,
+     "ENGINEER_3": 74
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 507,
+    "clusters": {
+     "ENGINEER_0": 300,
+     "DRIVER_1": 207
+    }
+   }
+  },
+  "FRACOL01": {
+   "silk": {
+    "k": 5,
+    "n_units": 47,
+    "clusters": {
+     "DRIVER_0": 11,
+     "ENGINEER_1": 4,
+     "DRIVER_2": 18,
+     "DRIVER_3": 8,
+     "ENGINEER_4": 6
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 47,
+    "clusters": {
+     "DRIVER_0": 11,
+     "ENGINEER_1": 4,
+     "DRIVER_2": 18,
+     "DRIVER_3": 8,
+     "ENGINEER_4": 6
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 47,
+    "clusters": {
+     "DRIVER_0": 37,
+     "ENGINEER_1": 10
+    }
+   }
+  },
+  "GEORUS01": {
+   "silk": {
+    "k": 5,
+    "n_units": 711,
+    "clusters": {
+     "DRIVER_0": 203,
+     "ENGINEER_1": 147,
+     "ENGINEER_2": 1,
+     "ENGINEER_3": 339,
+     "ENGINEER_4": 21
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 711,
+    "clusters": {
+     "DRIVER_0": 203,
+     "ENGINEER_1": 147,
+     "ENGINEER_2": 1,
+     "ENGINEER_3": 339,
+     "ENGINEER_4": 21
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 711,
+    "clusters": {
+     "ENGINEER_0": 22,
+     "DRIVER_1": 689
+    }
+   }
+  },
+  "GUAZHO01": {
+   "silk": {
+    "k": 6,
+    "n_units": 157,
+    "clusters": {
+     "ENGINEER_0": 8,
+     "DRIVER_1": 39,
+     "DRIVER_2": 87,
+     "ENGINEER_3": 18,
+     "DRIVER_4": 2,
+     "ENGINEER_5": 3
+    }
+   },
+   "silk_raw": {
+    "k": 6,
+    "n_units": 157,
+    "clusters": {
+     "ENGINEER_0": 8,
+     "DRIVER_1": 39,
+     "DRIVER_2": 87,
+     "ENGINEER_3": 18,
+     "DRIVER_4": 2,
+     "ENGINEER_5": 3
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 157,
+    "clusters": {
+     "ENGINEER_0": 115,
+     "DRIVER_1": 42
+    }
+   }
+  },
+  "KEVMAG01": {
+   "silk": {
+    "k": 6,
+    "n_units": 348,
+    "clusters": {
+     "DRIVER_0": 131,
+     "ENGINEER_1": 67,
+     "ENGINEER_2": 4,
+     "ENGINEER_3": 1,
+     "ENGINEER_4": 143,
+     "ENGINEER_5": 2
+    }
+   },
+   "silk_raw": {
+    "k": 6,
+    "n_units": 348,
+    "clusters": {
+     "ENGINEER_0": 131,
+     "ENGINEER_1": 67,
+     "ENGINEER_2": 4,
+     "ENGINEER_3": 1,
+     "ENGINEER_4": 143,
+     "ENGINEER_5": 2
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 348,
+    "clusters": {
+     "DRIVER_0": 342,
+     "ENGINEER_1": 6
+    }
+   }
+  },
+  "KIMRAI01": {
+   "silk": {
+    "k": 5,
+    "n_units": 360,
+    "clusters": {
+     "ENGINEER_0": 31,
+     "DRIVER_1": 100,
+     "ENGINEER_2": 117,
+     "ENGINEER_3": 4,
+     "ENGINEER_4": 108
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 360,
+    "clusters": {
+     "ENGINEER_0": 31,
+     "DRIVER_1": 100,
+     "ENGINEER_2": 117,
+     "ENGINEER_3": 4,
+     "ENGINEER_4": 108
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 360,
+    "clusters": {
+     "DRIVER_0": 248,
+     "ENGINEER_1": 112
+    }
+   }
+  },
+  "LANNOR01": {
+   "silk": {
+    "k": 3,
+    "n_units": 1115,
+    "clusters": {
+     "ENGINEER_0": 585,
+     "ENGINEER_1": 1,
+     "DRIVER_2": 529
+    }
+   },
+   "silk_raw": {
+    "k": 3,
+    "n_units": 1115,
+    "clusters": {
+     "ENGINEER_0": 585,
+     "ENGINEER_1": 1,
+     "ENGINEER_2": 529
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 1115,
+    "clusters": {
+     "DRIVER_0": 1114,
+     "ENGINEER_1": 1
+    }
+   }
+  },
+  "LANSTR01": {
+   "silk": {
+    "k": 6,
+    "n_units": 424,
+    "clusters": {
+     "ENGINEER_0": 24,
+     "ENGINEER_1": 72,
+     "DRIVER_2": 77,
+     "ENGINEER_3": 181,
+     "DRIVER_4": 1,
+     "ENGINEER_5": 69
+    }
+   },
+   "silk_raw": {
+    "k": 6,
+    "n_units": 424,
+    "clusters": {
+     "ENGINEER_0": 24,
+     "ENGINEER_1": 72,
+     "DRIVER_2": 77,
+     "ENGINEER_3": 181,
+     "DRIVER_4": 1,
+     "ENGINEER_5": 69
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 424,
+    "clusters": {
+     "DRIVER_0": 243,
+     "ENGINEER_1": 181
+    }
+   }
+  },
+  "LEWHAM01": {
+   "silk": {
+    "k": 5,
+    "n_units": 1468,
+    "clusters": {
+     "ENGINEER_0": 24,
+     "ENGINEER_1": 508,
+     "DRIVER_2": 252,
+     "ENGINEER_3": 11,
+     "ENGINEER_4": 673
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 1468,
+    "clusters": {
+     "ENGINEER_0": 24,
+     "ENGINEER_1": 508,
+     "DRIVER_2": 252,
+     "ENGINEER_3": 11,
+     "ENGINEER_4": 673
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 1468,
+    "clusters": {
+     "DRIVER_0": 287,
+     "ENGINEER_1": 1181
+    }
+   }
+  },
+  "LIALAW01": {
+   "silk": {
+    "k": 4,
+    "n_units": 53,
+    "clusters": {
+     "ENGINEER_0": 19,
+     "ENGINEER_1": 13,
+     "DRIVER_2": 3,
+     "DRIVER_3": 18
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 53,
+    "clusters": {
+     "ENGINEER_0": 19,
+     "ENGINEER_1": 13,
+     "DRIVER_2": 3,
+     "DRIVER_3": 18
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 53,
+    "clusters": {
+     "ENGINEER_0": 16,
+     "DRIVER_1": 37
+    }
+   }
+  },
+  "LOGSAR01": {
+   "silk": {
+    "k": 6,
+    "n_units": 142,
+    "clusters": {
+     "ENGINEER_0": 49,
+     "DRIVER_1": 61,
+     "ENGINEER_2": 15,
+     "DRIVER_3": 15,
+     "DRIVER_4": 1,
+     "ENGINEER_5": 1
+    }
+   },
+   "silk_raw": {
+    "k": 6,
+    "n_units": 142,
+    "clusters": {
+     "ENGINEER_0": 49,
+     "DRIVER_1": 61,
+     "ENGINEER_2": 15,
+     "DRIVER_3": 15,
+     "DRIVER_4": 1,
+     "ENGINEER_5": 1
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 142,
+    "clusters": {
+     "ENGINEER_0": 81,
+     "DRIVER_1": 61
+    }
+   }
+  },
+  "MAXVER01": {
+   "silk": {
+    "k": 5,
+    "n_units": 1507,
+    "clusters": {
+     "DRIVER_0": 259,
+     "ENGINEER_1": 560,
+     "ENGINEER_2": 2,
+     "ENGINEER_3": 2,
+     "ENGINEER_4": 684
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 1507,
+    "clusters": {
+     "DRIVER_0": 259,
+     "ENGINEER_1": 560,
+     "ENGINEER_2": 2,
+     "ENGINEER_3": 2,
+     "ENGINEER_4": 684
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 1507,
+    "clusters": {
+     "DRIVER_0": 1505,
+     "ENGINEER_1": 2
+    }
+   }
+  },
+  "MICSCH02": {
+   "silk": {
+    "k": 3,
+    "n_units": 77,
+    "clusters": {
+     "ENGINEER_0": 20,
+     "DRIVER_1": 15,
+     "ENGINEER_2": 42
+    }
+   },
+   "silk_raw": {
+    "k": 3,
+    "n_units": 77,
+    "clusters": {
+     "ENGINEER_0": 20,
+     "DRIVER_1": 15,
+     "ENGINEER_2": 42
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 77,
+    "clusters": {
+     "ENGINEER_0": 62,
+     "DRIVER_1": 15
+    }
+   }
+  },
+  "NICHUL01": {
+   "silk": {
+    "k": 6,
+    "n_units": 474,
+    "clusters": {
+     "DRIVER_0": 102,
+     "ENGINEER_1": 175,
+     "ENGINEER_2": 194,
+     "DRIVER_3": 1,
+     "ENGINEER_4": 1,
+     "ENGINEER_5": 1
+    }
+   },
+   "silk_raw": {
+    "k": 6,
+    "n_units": 474,
+    "clusters": {
+     "DRIVER_0": 102,
+     "ENGINEER_1": 175,
+     "ENGINEER_2": 194,
+     "DRIVER_3": 1,
+     "ENGINEER_4": 1,
+     "ENGINEER_5": 1
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 474,
+    "clusters": {
+     "ENGINEER_0": 473,
+     "DRIVER_1": 1
+    }
+   }
+  },
+  "NICLAF01": {
+   "silk": {
+    "k": 4,
+    "n_units": 124,
+    "clusters": {
+     "DRIVER_0": 27,
+     "DRIVER_1": 36,
+     "DRIVER_2": 1,
+     "ENGINEER_3": 60
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 124,
+    "clusters": {
+     "DRIVER_0": 27,
+     "DRIVER_1": 36,
+     "DRIVER_2": 1,
+     "ENGINEER_3": 60
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 124,
+    "clusters": {
+     "ENGINEER_0": 97,
+     "DRIVER_1": 27
+    }
+   }
+  },
+  "NIKMAZ01": {
+   "silk": {
+    "k": 3,
+    "n_units": 78,
+    "clusters": {
+     "ENGINEER_0": 26,
+     "DRIVER_1": 22,
+     "ENGINEER_2": 30
+    }
+   },
+   "silk_raw": {
+    "k": 3,
+    "n_units": 78,
+    "clusters": {
+     "ENGINEER_0": 26,
+     "DRIVER_1": 22,
+     "ENGINEER_2": 30
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 78,
+    "clusters": {
+     "ENGINEER_0": 52,
+     "DRIVER_1": 26
+    }
+   }
+  },
+  "NYCDEV01": {
+   "silk": {
+    "k": 2,
+    "n_units": 34,
+    "clusters": {
+     "DRIVER_0": 30,
+     "ENGINEER_1": 4
+    }
+   },
+   "silk_raw": {
+    "k": 2,
+    "n_units": 34,
+    "clusters": {
+     "ENGINEER_0": 30,
+     "ENGINEER_1": 4
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 34,
+    "clusters": {
+     "DRIVER_0": 30,
+     "ENGINEER_1": 4
+    }
+   }
+  },
+  "OSCPIA01": {
+   "silk": {
+    "k": 5,
+    "n_units": 408,
+    "clusters": {
+     "DRIVER_0": 77,
+     "ENGINEER_1": 189,
+     "ENGINEER_2": 115,
+     "ENGINEER_3": 9,
+     "ENGINEER_4": 18
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 408,
+    "clusters": {
+     "DRIVER_0": 77,
+     "ENGINEER_1": 189,
+     "ENGINEER_2": 115,
+     "ENGINEER_3": 9,
+     "ENGINEER_4": 18
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 408,
+    "clusters": {
+     "DRIVER_0": 219,
+     "ENGINEER_1": 189
+    }
+   }
+  },
+  "PIEGAS01": {
+   "silk": {
+    "k": 4,
+    "n_units": 542,
+    "clusters": {
+     "ENGINEER_0": 242,
+     "ENGINEER_1": 30,
+     "DRIVER_2": 192,
+     "ENGINEER_3": 78
+    }
+   },
+   "silk_raw": {
+    "k": 4,
+    "n_units": 542,
+    "clusters": {
+     "ENGINEER_0": 242,
+     "ENGINEER_1": 30,
+     "DRIVER_2": 192,
+     "ENGINEER_3": 78
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 542,
+    "clusters": {
+     "DRIVER_0": 222,
+     "ENGINEER_1": 320
+    }
+   }
+  },
+  "ROMGRO01": {
+   "silk": {
+    "k": 5,
+    "n_units": 200,
+    "clusters": {
+     "ENGINEER_0": 44,
+     "DRIVER_1": 71,
+     "DRIVER_2": 57,
+     "DRIVER_3": 2,
+     "ENGINEER_4": 26
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 200,
+    "clusters": {
+     "ENGINEER_0": 44,
+     "DRIVER_1": 71,
+     "DRIVER_2": 57,
+     "DRIVER_3": 2,
+     "ENGINEER_4": 26
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 200,
+    "clusters": {
+     "ENGINEER_0": 198,
+     "DRIVER_1": 2
+    }
+   }
+  },
+  "SEBVET01": {
+   "silk": {
+    "k": 5,
+    "n_units": 464,
+    "clusters": {
+     "ENGINEER_0": 100,
+     "DRIVER_1": 134,
+     "ENGINEER_2": 228,
+     "DRIVER_3": 1,
+     "ENGINEER_4": 1
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 464,
+    "clusters": {
+     "ENGINEER_0": 100,
+     "DRIVER_1": 134,
+     "ENGINEER_2": 228,
+     "DRIVER_3": 1,
+     "ENGINEER_4": 1
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 464,
+    "clusters": {
+     "DRIVER_0": 463,
+     "ENGINEER_1": 1
+    }
+   }
+  },
+  "SERPER01": {
+   "silk": {
+    "k": 5,
+    "n_units": 558,
+    "clusters": {
+     "DRIVER_0": 97,
+     "ENGINEER_1": 97,
+     "ENGINEER_2": 86,
+     "DRIVER_3": 1,
+     "ENGINEER_4": 277
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 558,
+    "clusters": {
+     "DRIVER_0": 97,
+     "ENGINEER_1": 97,
+     "ENGINEER_2": 86,
+     "DRIVER_3": 1,
+     "ENGINEER_4": 277
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 558,
+    "clusters": {
+     "ENGINEER_0": 557,
+     "DRIVER_1": 1
+    }
+   }
+  },
+  "STOVAN01": {
+   "silk": {
+    "k": 5,
+    "n_units": 53,
+    "clusters": {
+     "ENGINEER_0": 2,
+     "DRIVER_1": 7,
+     "ENGINEER_2": 13,
+     "ENGINEER_3": 1,
+     "ENGINEER_4": 30
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 53,
+    "clusters": {
+     "ENGINEER_0": 2,
+     "DRIVER_1": 7,
+     "ENGINEER_2": 13,
+     "ENGINEER_3": 1,
+     "ENGINEER_4": 30
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 53,
+    "clusters": {
+     "DRIVER_0": 52,
+     "ENGINEER_1": 1
+    }
+   }
+  },
+  "VALBOT01": {
+   "silk": {
+    "k": 5,
+    "n_units": 575,
+    "clusters": {
+     "ENGINEER_0": 217,
+     "ENGINEER_1": 38,
+     "ENGINEER_2": 312,
+     "ENGINEER_3": 3,
+     "DRIVER_4": 5
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 575,
+    "clusters": {
+     "ENGINEER_0": 217,
+     "ENGINEER_1": 38,
+     "ENGINEER_2": 312,
+     "ENGINEER_3": 3,
+     "DRIVER_4": 5
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 575,
+    "clusters": {
+     "DRIVER_0": 567,
+     "ENGINEER_1": 8
+    }
+   }
+  },
+  "YUKTSU01": {
+   "silk": {
+    "k": 5,
+    "n_units": 233,
+    "clusters": {
+     "ENGINEER_0": 107,
+     "DRIVER_1": 70,
+     "DRIVER_2": 1,
+     "ENGINEER_3": 44,
+     "DRIVER_4": 11
+    }
+   },
+   "silk_raw": {
+    "k": 5,
+    "n_units": 233,
+    "clusters": {
+     "ENGINEER_0": 107,
+     "DRIVER_1": 70,
+     "DRIVER_2": 1,
+     "ENGINEER_3": 44,
+     "DRIVER_4": 11
+    }
+   },
+   "k2": {
+    "k": 2,
+    "n_units": 233,
+    "clusters": {
+     "ENGINEER_0": 119,
+     "DRIVER_1": 114
+    }
+   }
+  }
+ },
+ "zero_embeddings_treated_as_missing": 2208,
+ "small_channel_units_silk": 114,
+ "small_channel_units_silk_raw": 114,
+ "small_channel_units_k2": 114,
+ "n_turns": 32368,
+ "n_turns_ge_min": 29134,
+ "turn_share_by_label_silk": {
+  "ENGINEER": 0.609,
+  "DRIVER": 0.343,
+  "UNATTRIBUTED": 0.048
+ },
+ "driver_speech_hours_silk": 9.36,
+ "ens_source_silk": {
+  "voice": 25253,
+  "text": 2493,
+  "none": 1388
+ },
+ "channels_renamed_by_constraint": [
+  "BREHAR01",
+  "KEVMAG01",
+  "LANNOR01",
+  "NYCDEV01"
+ ],
+ "note": "No accuracy here: accuracy is computed only against hand labels (a6_evaluate)."
+}

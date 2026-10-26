@@ -1,0 +1,27 @@
+{
+ "A_box_calls": {
+  "n": 163,
+  "msg_minus_pitin_s_quantiles": {
+   "0.05": -63.1,
+   "0.1": -16.5,
+   "0.25": 9.5,
+   "0.5": 31.5,
+   "0.75": 67.1,
+   "0.9": 127.0
+  },
+  "share_after_pit_entry": 0.816,
+  "reading": "negative = call precedes pit entry (expected). Positive values imply timestamp lag (or a call made in the pit lane)."
+ },
+ "B_first_post_race_clip": {
+  "n_cars": 1734,
+  "seconds_after_line_quantiles": {
+   "0.05": 64.3,
+   "0.1": 92.9,
+   "0.25": 138.8,
+   "0.5": 201.0,
+   "0.75": 296.6,
+   "0.9": 481.4
+  },
+  "reading": "lower tail approximates the minimum broadcast lag after the flag"
+ }
+}

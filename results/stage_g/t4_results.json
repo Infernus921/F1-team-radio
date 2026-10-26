@@ -1,0 +1,93 @@
+{
+ "mde": {
+  "Y1": {
+   "n_laps": 1794,
+   "n_drivers": 33,
+   "sd_x_after_controls": 0.2047,
+   "resid_sd_s": 0.5606,
+   "design_effect": 2.023,
+   "mde_s_per_unit_x": 0.2576,
+   "mde_s_for_0_to_1_x": "same as above: x is a probability, so a unit is calm (0) -> aroused (1)",
+   "power": 0.8,
+   "alpha": 0.05
+  },
+  "Y2": {
+   "n_laps": 1902,
+   "n_drivers": 36,
+   "sd_x_after_controls": 0.2047,
+   "resid_sd_s": 0.3484,
+   "design_effect": 6.247,
+   "mde_s_per_unit_x": 0.2733,
+   "mde_s_for_0_to_1_x": "same as above: x is a probability, so a unit is calm (0) -> aroused (1)",
+   "power": 0.8,
+   "alpha": 0.05
+  }
+ },
+ "arousal_source": "e5_wavlm_partial_ft",
+ "outcomes": {
+  "Y1": {
+   "n_laps": 1794,
+   "n_drivers": 33,
+   "beta_x_mixed": 0.1474,
+   "ci95_mixed": [
+    -0.02,
+    0.3148
+   ],
+   "p_mixed": 0.0844,
+   "beta_x_ols_cluster": 0.1308,
+   "ci95_ols_cluster": [
+    -0.0082,
+    0.2697
+   ],
+   "beta_res_L": 0.0154,
+   "slope_variance_component": 0.050854,
+   "slope_sd": 0.2255,
+   "lrt_slopes_vs_intercepts": {
+    "stat": 2.556,
+    "p_mixture": 0.1943
+   },
+   "abs_beta_below_mde": true,
+   "attenuation_check_labelled_subset": {
+    "n": 191,
+    "beta_hand_label": -0.005,
+    "ci95_hand_label": [
+     -0.1929,
+     0.1828
+    ],
+    "beta_prob_same_rows": -0.0607
+   }
+  },
+  "Y2": {
+   "n_laps": 1902,
+   "n_drivers": 36,
+   "beta_x_mixed": -0.0204,
+   "ci95_mixed": [
+    -0.1179,
+    0.0771
+   ],
+   "p_mixed": 0.6819,
+   "beta_x_ols_cluster": 0.0166,
+   "ci95_ols_cluster": [
+    -0.0685,
+    0.1018
+   ],
+   "beta_res_L": 0.0106,
+   "slope_variance_component": 0.008122,
+   "slope_sd": 0.0901,
+   "lrt_slopes_vs_intercepts": {
+    "stat": 0.709,
+    "p_mixture": 0.5508
+   },
+   "abs_beta_below_mde": true,
+   "attenuation_check_labelled_subset": {
+    "n": 198,
+    "beta_hand_label": 0.0604,
+    "ci95_hand_label": [
+     -0.0121,
+     0.1329
+    ],
+    "beta_prob_same_rows": 0.0526
+   }
+  }
+ }
+}

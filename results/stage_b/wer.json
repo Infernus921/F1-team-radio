@@ -1,0 +1,39 @@
+{
+ "n_clips": 41,
+ "n_ref_words": 859,
+ "systems": {
+  "dataset_cohere": {
+   "wer": 0.298,
+   "ci95": [
+    0.2265,
+    0.3848
+   ]
+  },
+  "whisper_plain": {
+   "wer": 0.3015,
+   "ci95": [
+    0.2308,
+    0.3892
+   ],
+   "relative_improvement_vs_dataset": -0.0117,
+   "rel_ci95_paired": [
+    -0.0812,
+    0.0407
+   ],
+   "meets_15pct_bar": false
+  },
+  "whisper_prompted": {
+   "wer": 0.2899,
+   "ci95": [
+    0.2203,
+    0.3795
+   ],
+   "relative_improvement_vs_dataset": 0.0273,
+   "rel_ci95_paired": [
+    -0.0317,
+    0.0763
+   ],
+   "meets_15pct_bar": false
+  }
+ }
+}

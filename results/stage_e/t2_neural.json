@@ -1,0 +1,477 @@
+{
+ "n": 250,
+ "classes": [
+  "GRIP_DEG",
+  "REL_PACE",
+  "INCIDENT",
+  "OTHER"
+ ],
+ "class_counts": {
+  "OTHER": 145,
+  "GRIP_DEG": 45,
+  "INCIDENT": 30,
+  "REL_PACE": 30
+ },
+ "dropped_sensor_classes": {
+  "TRAFFIC": 24,
+  "POWER": 11
+ },
+ "hyperparams": {
+  "d": 32,
+  "heads": 4,
+  "dropout": 0.3,
+  "lr": 0.001,
+  "wd": 0.001,
+  "epochs": 60,
+  "batch": 32,
+  "seeds": [
+   0,
+   1,
+   2
+  ]
+ },
+ "models": {
+  "majority": {
+   "GRIP_DEG": {
+    "auc_pr": 0.1503,
+    "ci95": [
+     0.1123,
+     0.2009
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.1016,
+    "ci95": [
+     0.0724,
+     0.1411
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.1006,
+    "ci95": [
+     0.0684,
+     0.1443
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.55,
+    "ci95": [
+     0.4672,
+     0.6362
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.2256,
+    "ci95": [
+     0.2158,
+     0.2446
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  },
+  "context": {
+   "GRIP_DEG": {
+    "auc_pr": 0.1818,
+    "ci95": [
+     0.1313,
+     0.2621
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.1373,
+    "ci95": [
+     0.0925,
+     0.2281
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.2011,
+    "ci95": [
+     0.1054,
+     0.3316
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.6423,
+    "ci95": [
+     0.5554,
+     0.729
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.2906,
+    "ci95": [
+     0.2658,
+     0.3416
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  },
+  "telemetry_lr": {
+   "GRIP_DEG": {
+    "auc_pr": 0.2371,
+    "ci95": [
+     0.1617,
+     0.3458
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.1303,
+    "ci95": [
+     0.0929,
+     0.1986
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.363,
+    "ci95": [
+     0.2248,
+     0.5433
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.6505,
+    "ci95": [
+     0.5702,
+     0.7311
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.3452,
+    "ci95": [
+     0.3055,
+     0.4106
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  },
+  "neural_concat": {
+   "GRIP_DEG": {
+    "auc_pr": 0.2108,
+    "ci95": [
+     0.1601,
+     0.2895
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.1524,
+    "ci95": [
+     0.0995,
+     0.2243
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.2234,
+    "ci95": [
+     0.1317,
+     0.3871
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.6114,
+    "ci95": [
+     0.5407,
+     0.6857
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.2995,
+    "ci95": [
+     0.274,
+     0.3566
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  },
+  "neural_gated": {
+   "GRIP_DEG": {
+    "auc_pr": 0.2219,
+    "ci95": [
+     0.164,
+     0.3141
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.1476,
+    "ci95": [
+     0.0999,
+     0.2312
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.2718,
+    "ci95": [
+     0.1673,
+     0.4638
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.6068,
+    "ci95": [
+     0.5234,
+     0.6925
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.312,
+    "ci95": [
+     0.2772,
+     0.377
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  },
+  "placebo_neural_gated": {
+   "GRIP_DEG": {
+    "auc_pr": 0.2444,
+    "ci95": [
+     0.1712,
+     0.3673
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.1076,
+    "ci95": [
+     0.0779,
+     0.1603
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.2925,
+    "ci95": [
+     0.2002,
+     0.4516
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.5952,
+    "ci95": [
+     0.5044,
+     0.6963
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.3099,
+    "ci95": [
+     0.2787,
+     0.3757
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  },
+  "placebo_telemetry_lr": {
+   "GRIP_DEG": {
+    "auc_pr": 0.2284,
+    "ci95": [
+     0.1707,
+     0.3255
+    ],
+    "prevalence": 0.18,
+    "chance_auc_pr": 0.1969,
+    "chance_95pct": 0.266,
+    "n_pos": 45
+   },
+   "REL_PACE": {
+    "auc_pr": 0.128,
+    "ci95": [
+     0.089,
+     0.195
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1364,
+    "chance_95pct": 0.1879,
+    "n_pos": 30
+   },
+   "INCIDENT": {
+    "auc_pr": 0.3153,
+    "ci95": [
+     0.1968,
+     0.4924
+    ],
+    "prevalence": 0.12,
+    "chance_auc_pr": 0.1395,
+    "chance_95pct": 0.1971,
+    "n_pos": 30
+   },
+   "OTHER": {
+    "auc_pr": 0.6057,
+    "ci95": [
+     0.511,
+     0.7045
+    ],
+    "prevalence": 0.58,
+    "chance_auc_pr": 0.5902,
+    "chance_95pct": 0.6392,
+    "n_pos": 145
+   },
+   "macro": {
+    "auc_pr": 0.3194,
+    "ci95": [
+     0.2877,
+     0.3798
+    ],
+    "no_skill": 0.25,
+    "chance_auc_pr": 0.2657,
+    "chance_95pct": 0.2934
+   }
+  }
+ },
+ "comparisons": {
+  "neural_gated_minus_context": {
+   "delta_macro_auc_pr": 0.0214,
+   "ci95": [
+    -0.0244,
+    0.0724
+   ],
+   "p_a_not_better": 0.155
+  },
+  "neural_gated_minus_neural_concat": {
+   "delta_macro_auc_pr": 0.0125,
+   "ci95": [
+    -0.021,
+    0.0527
+   ],
+   "p_a_not_better": 0.24
+  },
+  "neural_gated_minus_telemetry_lr": {
+   "delta_macro_auc_pr": -0.0332,
+   "ci95": [
+    -0.0895,
+    0.028
+   ],
+   "p_a_not_better": 0.843
+  },
+  "neural_gated_minus_placebo_neural_gated": {
+   "delta_macro_auc_pr": 0.0021,
+   "ci95": [
+    -0.0457,
+    0.0474
+   ],
+   "p_a_not_better": 0.46
+  },
+  "telemetry_lr_minus_placebo_telemetry_lr": {
+   "delta_macro_auc_pr": 0.0259,
+   "ci95": [
+    -0.0164,
+    0.066
+   ],
+   "p_a_not_better": 0.14
+  },
+  "telemetry_lr_minus_context": {
+   "delta_macro_auc_pr": 0.0546,
+   "ci95": [
+    0.0,
+    0.1154
+   ],
+   "p_a_not_better": 0.025
+  }
+ }
+}

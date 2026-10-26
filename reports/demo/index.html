@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inside One Radio Message</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --ink: #16181d; --muted: #5b6070; --line: #e3e5ea; --tint: #f1f2f5;
+    --driver: #c8102e; --engineer: #7a8090; --llm: #2a78d6; --deb: #eb6834; --tfidf: #1baf7a;
+    --good: #1d7a46; --bad: #b4232c; --hilite: #ffe7a3;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 Calibri, "Segoe UI", Arial, sans-serif; }
+  header { padding: 20px 28px 10px; }
+  h1 { font: 700 28px/1.15 Cambria, Georgia, serif; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0; }
+  .disclose { display: inline-block; margin-top: 10px; background: #fff4d6; color: #6b4e00; border-radius: 8px; padding: 6px 12px; font-size: 13px; }
+  .gloss { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .gloss span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13px; color: var(--muted); }
+  .gloss b { color: var(--ink); }
+  .wrap { display: grid; grid-template-columns: 290px 1fr; gap: 20px; padding: 10px 28px 28px; }
+  .list { display: flex; flex-direction: column; gap: 10px; }
+  .clip { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; text-align: left; font: inherit; color: inherit; }
+  .clip:hover { border-color: #b9bdc8; }
+  .clip.on { border-color: var(--driver); box-shadow: 0 0 0 2px #c8102e22; }
+  .clip .who { font-weight: 700; }
+  .clip .where { color: var(--muted); font-size: 13px; }
+  .clip .q { margin-top: 6px; font-style: italic; font-size: 14px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
+  .tag.fail { background: #fbe9ea; color: var(--bad); }
+  main { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .card h2 { font: 700 18px/1.2 Cambria, Georgia, serif; margin: 0 0 4px; }
+  .card .hint { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+  .step { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font: 700 13px Calibri, Arial; margin-right: 8px; vertical-align: 2px; }
+  .player { display: flex; gap: 14px; align-items: center; }
+  .play { width: 52px; height: 52px; border-radius: 50%; border: 0; background: var(--driver); color: #fff; font-size: 20px; cursor: pointer; flex: none; }
+  .play:focus-visible { outline: 3px solid #c8102e55; }
+  #wave { flex: 1; min-width: 0; width: 100%; height: 90px; display: block; cursor: pointer; }
+  .legend { display: flex; gap: 16px; font-size: 13px; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+  .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 5px; }
+  .transcript { font-size: 20px; line-height: 1.8; margin-top: 14px; }
+  .transcript .w { border-radius: 4px; padding: 1px 1px; transition: background .08s; }
+  .transcript .w.d { color: var(--driver); }
+  .transcript .w.e { color: var(--engineer); }
+  .transcript .w.now { background: var(--hilite); color: var(--ink); }
+  .transcript .w.utt { font-weight: 700; }
+  .grid3 { display: grid; grid-template-columns: 1.25fr 0.85fr 1.2fr; gap: 16px; }
+  .bars { display: flex; flex-direction: column; gap: 10px; }
+  .cls { font-size: 14px; }
+  .cls .name { display: flex; justify-content: space-between; margin-bottom: 3px; }
+  .cls .name b.human { color: var(--good); }
+  .cls .row { display: grid; grid-template-columns: 1fr 42px; align-items: center; gap: 6px; margin: 2px 0; }
+  .cls .track { height: 9px; background: var(--tint); border-radius: 5px; overflow: hidden; }
+  .cls .fill { height: 100%; border-radius: 5px; }
+  .cls .v { font-size: 12px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .cls.isHuman { background: #eef7f1; border-radius: 8px; box-shadow: 0 0 0 6px #eef7f1; }
+  .meter { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .lvl { display: grid; grid-template-columns: 78px 1fr 42px; gap: 8px; align-items: center; font-size: 14px; }
+  .lvl .track { height: 18px; background: var(--tint); border-radius: 6px; overflow: hidden; }
+  .lvl .fill { height: 100%; background: var(--driver); border-radius: 6px; }
+  .lvl.human span:first-child { font-weight: 700; color: var(--good); }
+  .verdict { margin-top: 12px; font-size: 14px; padding: 8px 10px; border-radius: 8px; }
+  .verdict.ok { background: #e6f3ec; color: var(--good); }
+  .verdict.no { background: #fbe9ea; color: var(--bad); }
+  svg text { font-family: Calibri, "Segoe UI", Arial, sans-serif; }
+  .explain { font-size: 16px; background: var(--tint); border-radius: 10px; padding: 12px 14px; }
+  #tip { position: fixed; pointer-events: none; background: #16181d; color: #fff; font-size: 12px; padding: 6px 9px; border-radius: 6px; opacity: 0; transition: opacity .1s; z-index: 10; max-width: 240px; }
+  .wrap > *, .grid3 > * { min-width: 0; }
+  @media (max-width: 1100px) { .wrap { grid-template-columns: minmax(0, 1fr); } .grid3 { grid-template-columns: minmax(0, 1fr); } .list { flex-direction: row; overflow-x: auto; padding-bottom: 6px; } .clip { min-width: 240px; } }
+  @media (max-width: 640px) { header { padding: 16px 16px 8px; } .wrap { padding: 8px 16px 20px; } .card { padding: 14px; } h1 { font-size: 24px; } .transcript { font-size: 17px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Inside one radio message</h1>
+  <p class="sub">An F1 driver says something on the team radio. Press play and follow the system: who spoke, what they claimed, how worked up they sound, and what the car was actually doing.</p>
+  <div class="disclose">Hand-picked examples to show how the pipeline works, so they are not representative. One failure is included. Overall accuracy is in the results.</div>
+  <div class="gloss">
+    <span><b>Driver</b>: in the car, often with engine noise behind them</span>
+    <span><b>Engineer</b>: team member at the pit wall, talking to the driver</span>
+    <span><b>Lap-time residual</b>: seconds slower (+) or faster (−) than our model expected for that lap</span>
+    <span><b>Placebo</b>: the same check run 3 laps <i>before</i> the message</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="list" id="list" aria-label="Radio clips"></nav>
+  <main>
+    <section class="card">
+      <h2><span class="step">1</span>Listen: who is speaking?</h2>
+      <p class="hint">Colour = speaker, as decided by our voice model (diarization + voice clustering). Words light up as they're spoken (Whisper large-v3 timings). Bold = the part the driver's claim was labelled on.</p>
+      <div class="player">
+        <button class="play" id="play" aria-label="Play">▶</button>
+        <canvas id="wave" aria-label="Waveform coloured by speaker"></canvas>
+      </div>
+      <div class="legend"><span><span class="sw" style="background:var(--driver)"></span>Driver</span><span><span class="sw" style="background:var(--engineer)"></span>Engineer</span><span id="meta"></span></div>
+      <div class="transcript" id="transcript"></div>
+      <audio id="audio" preload="auto"></audio>
+    </section>
+
+    <div class="grid3">
+      <section class="card">
+        <h2><span class="step">2</span>What is the driver claiming?</h2>
+        <p class="hint">Probability each model gives to each category. Green = the human label.</p>
+        <div class="legend" style="margin:0 0 10px"><span><span class="sw" style="background:var(--llm)"></span>LLM, zero-shot</span><span><span class="sw" style="background:var(--deb)"></span>Fine-tuned DeBERTa</span><span><span class="sw" style="background:var(--tfidf)"></span>TF-IDF</span></div>
+        <div class="bars" id="claims"></div>
+      </section>
+      <section class="card">
+        <h2><span class="step">3</span>How worked up do they sound?</h2>
+        <p class="hint">From the audio alone (WavLM, partially fine-tuned). Green = the human label.</p>
+        <div class="meter" id="arousal"></div>
+        <div class="verdict" id="aroVerdict"></div>
+      </section>
+      <section class="card">
+        <h2><span class="step">4</span>What was the car doing?</h2>
+        <p class="hint">Lap times around the message. Hover a bar for details.</p>
+        <svg id="laps" viewBox="0 0 360 200" width="100%" role="img" aria-label="Lap-time residuals around the message"></svg>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2><span class="step">5</span>Speed around the message</h2>
+      <p class="hint">The car's speed (km/h) from 2 minutes before to 1 minute after the radio timestamp. We found broadcast timestamps lag the actual speech by ~30–60 s, so the shaded band is roughly when it was really said.</p>
+      <svg id="speed" viewBox="0 0 900 170" width="100%" role="img" aria-label="Speed trace around the message"></svg>
+    </section>
+
+    <section class="explain" id="explain"></section>
+  </main>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script src="data.js"></script>
+<script>
+const D = window.DEMO, C = D.clips;
+const NICE = { GRIP_DEG: "Tyres / grip", INCIDENT: "Incident / contact", REL_PACE: "Pace vs other cars",
+  NO_SENSOR: "Can't be checked (brakes, fuel…)", NO_CLAIM: "No claim (chat, questions)", TRAFFIC: "Traffic", POWER: "Power / engine" };
+const AROUSAL = ["Calm", "Raised", "Shouting"];
+const MODELS = [["LLM zero-shot", "--llm"], ["Fine-tuned DeBERTa", "--deb"], ["TF-IDF", "--tfidf"]];
+const $ = id => document.getElementById(id);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const audio = $("audio"); let cur = null, raf = null;
+
+function quote(c) { const t = c.text.trim(); return "“" + (t.length > 60 ? t.slice(0, 58) + "…" : t) + "”"; }
+C.forEach((c, i) => {
+  const b = document.createElement("button");
+  b.className = "clip"; b.id = "clip" + i;
+  b.innerHTML = `<div class="who">${c.driver}${c.showcase === "failure" ? '<span class="tag fail">Failure case</span>' : ""}</div>
+    <div class="where">${c.race} ${c.year} · lap ${c.lap}</div><div class="q">${quote(c)}</div>`;
+  b.onclick = () => show(i);
+  $("list").appendChild(b);
+});
+
+function whoAt(c, t) { const tr = c.turns.find(x => t >= x.s && t < x.e); return tr ? tr.who : null; }
+
+function drawWave(c, t = 0) {
+  const cv = $("wave"), dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr; const g = cv.getContext("2d"); g.scale(dpr, dpr);
+  const n = c.peaks.length, bw = W / n, dur = c.dur;
+  for (let i = 0; i < n; i++) {
+    const tt = (i + 0.5) / n * dur, who = whoAt(c, tt), h = Math.max(2, c.peaks[i] * (H - 18));
+    g.fillStyle = who === "DRIVER" ? css("--driver") : who === "ENGINEER" ? css("--engineer") : "#d7dae1";
+    g.globalAlpha = tt <= t ? 1 : 0.55;
+    g.fillRect(i * bw + 0.5, (H - 12 - h) / 2, Math.max(1, bw - 1), h);
+  }
+  g.globalAlpha = 1;
+  const [us, ue] = c.utt; g.fillStyle = css("--ink");
+  g.fillRect(us / dur * W, H - 6, (ue - us) / dur * W, 3);
+  g.fillStyle = css("--ink"); g.fillRect(t / dur * W, 0, 2, H - 10);
+}
+
+function drawTranscript(c) {
+  const box = $("transcript"); box.innerHTML = "";
+  c.words.forEach(([s, e, w], k) => {
+    const sp = document.createElement("span"), who = whoAt(c, (s + e) / 2);
+    sp.className = "w " + (who === "DRIVER" ? "d" : who === "ENGINEER" ? "e" : "") + ((s + e) / 2 >= c.utt[0] && (s + e) / 2 <= c.utt[1] ? " utt" : "");
+    sp.textContent = w; sp.dataset.s = s; sp.dataset.e = e;
+    sp.onclick = () => { audio.currentTime = s; audio.play(); };
+    box.appendChild(sp);
+  });
+}
+
+function drawClaims(c) {
+  const box = $("claims"); box.innerHTML = "";
+  c.classes.forEach((k, j) => {
+    const d = document.createElement("div"), isH = k === c.human.claim;
+    d.className = "cls" + (isH ? " isHuman" : "");
+    d.innerHTML = `<div class="name"><span>${NICE[k] || k}</span>${isH ? '<b class="human">human label</b>' : ""}</div>` +
+      MODELS.filter(([m]) => c.preds[m]).map(([m, col]) => { const v = c.preds[m][j];
+        return `<div class="row" data-tip="${m}: ${(v * 100).toFixed(0)}% for “${NICE[k] || k}”"><div class="track"><div class="fill" style="width:${v * 100}%;background:var(${col})"></div></div><span class="v">${(v * 100).toFixed(0)}%</span></div>`; }).join("");
+    box.appendChild(d);
+  });
+}
+
+function drawArousal(c) {
+  const box = $("arousal"); box.innerHTML = "";
+  const hi = Number(c.human.arousal) - 1, pred = c.arousal.indexOf(Math.max(...c.arousal));
+  c.arousal.forEach((v, i) => {
+    const d = document.createElement("div"); d.className = "lvl" + (i === hi ? " human" : "");
+    d.innerHTML = `<span>${AROUSAL[i]}</span><div class="track"><div class="fill" style="width:${v * 100}%;opacity:${0.45 + 0.55 * (i / 2)}"></div></div><span class="v" style="font-size:12px;color:var(--muted);text-align:right">${(v * 100).toFixed(0)}%</span>`;
+    box.appendChild(d);
+  });
+  const ok = pred === hi; const vv = $("aroVerdict");
+  vv.className = "verdict " + (ok ? "ok" : "no");
+  vv.textContent = ok ? `Model agrees with the human: “${AROUSAL[hi]}”.` : `Model says “${AROUSAL[pred]}”, human said “${AROUSAL[hi]}”.`;
+}
+
+function drawLaps(c) {
+  const s = $("laps"); s.innerHTML = ""; const W = 360, H = 200, L = 44, B = 30, T = 14;
+  const laps = c.laps, vals = laps.map(x => x.res).filter(v => v !== null);
+  const m = Math.max(1, ...vals.map(Math.abs)) * 1.1;
+  const y = v => T + (H - B - T) / 2 - v / m * (H - B - T) / 2, bw = (W - L - 6) / laps.length;
+  const ns = "http://www.w3.org/2000/svg", el = (n, a) => { const e = document.createElementNS(ns, n); for (const k in a) e.setAttribute(k, a[k]); s.appendChild(e); return e; };
+  const pl = c.lap - 3, ip = laps.findIndex(x => x.lap === pl);
+  if (ip >= 0) { el("rect", { x: L + ip * bw, y: T - 6, width: bw, height: H - B - T + 6, fill: "#1baf7a22" });
+    el("text", { x: L + ip * bw + bw / 2, y: T + 2, "text-anchor": "middle", "font-size": 9, fill: "#127a55" }).textContent = "placebo"; }
+  el("line", { x1: L, x2: W - 4, y1: y(0), y2: y(0), stroke: "#b9bdc8" });
+  [m * 0.8, -m * 0.8].forEach(v => { el("text", { x: L - 4, y: y(v) + 3, "text-anchor": "end", "font-size": 9, fill: "#5b6070" }).textContent = (v > 0 ? "+" : "−") + Math.abs(v).toFixed(1) + " s"; });
+  laps.forEach((x, i) => {
+    const cx = L + i * bw, isMsg = x.lap === c.lap;
+    if (isMsg) el("rect", { x: cx, y: T - 6, width: bw, height: H - B - T + 6, fill: "#c8102e14" });
+    if (x.res === null) {
+      el("text", { x: cx + bw / 2, y: y(0) - 4, "text-anchor": "middle", "font-size": 9, fill: "#8a8f9c" }).textContent = x.pit ? "pit" : x.sc ? "SC" : "–";
+    } else {
+      const r = el("rect", { x: cx + 3, width: bw - 6, y: Math.min(y(0), y(x.res)), height: Math.max(1.5, Math.abs(y(x.res) - y(0))), rx: 3,
+        fill: isMsg ? css("--driver") : x.res > 0 ? "#e8a0a8" : "#9cc3a9" });
+      r.dataset.tip = `Lap ${x.lap}${isMsg ? " (message lap)" : x.lap === pl ? " (placebo lap)" : ""}: ${x.res > 0 ? "+" : ""}${x.res.toFixed(2)} s vs expected`;
+    }
+    el("text", { x: cx + bw / 2, y: H - B + 14, "text-anchor": "middle", "font-size": 9, fill: isMsg ? css("--driver") : "#5b6070", "font-weight": isMsg ? 700 : 400 }).textContent = x.lap;
+  });
+  el("text", { x: L, y: H - 2, "font-size": 10, fill: "#5b6070" }).textContent = "lap number  ·  red = message lap  ·  up = slower than expected";
+}
+
+function drawSpeed(c) {
+  const s = $("speed"); s.innerHTML = ""; const W = 900, H = 170, L = 40, B = 24, T = 10;
+  const sp = c.speed, n = sp.length, vals = sp.filter(v => v !== null), mx = Math.max(...vals, 1);
+  const x = i => L + i / (n - 1) * (W - L - 8), y = v => T + (1 - v / (mx * 1.05)) * (H - B - T);
+  const ns = "http://www.w3.org/2000/svg", el = (nm, a) => { const e = document.createElementNS(ns, nm); for (const k in a) e.setAttribute(k, a[k]); s.appendChild(e); return e; };
+  el("rect", { x: x(120 - 60), y: T, width: x(120 - 30) - x(120 - 60), height: H - B - T, fill: "#c8102e14" });
+  el("text", { x: (x(60) + x(90)) / 2, y: T + 12, "text-anchor": "middle", "font-size": 11, fill: "#9b1a2c" }).textContent = "likely spoken here";
+  [0, 100, 200, 300].filter(v => v <= mx * 1.05).forEach(v => {
+    el("line", { x1: L, x2: W - 8, y1: y(v), y2: y(v), stroke: "#eceef2" });
+    el("text", { x: L - 6, y: y(v) + 3, "text-anchor": "end", "font-size": 10, fill: "#5b6070" }).textContent = v; });
+  let d = "", pen = false;
+  sp.forEach((v, i) => { if (v === null) { pen = false; return; } d += (pen ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1) + " "; pen = true; });
+  el("path", { d, fill: "none", stroke: css("--ink"), "stroke-width": 2, "stroke-linejoin": "round" });
+  el("line", { x1: x(120), x2: x(120), y1: T, y2: H - B, stroke: css("--driver"), "stroke-width": 2, "stroke-dasharray": "4 3" });
+  el("text", { x: x(120) + 5, y: H - B - 6, "font-size": 11, fill: css("--driver") }).textContent = "radio timestamp";
+  [-120, -90, -60, -30, 0, 30, 60].forEach(t => el("text", { x: x(t + 120), y: H - 6, "text-anchor": "middle", "font-size": 10, fill: "#5b6070" }).textContent = (t > 0 ? "+" : "") + t + " s");
+  const hit = el("rect", { x: L, y: T, width: W - L - 8, height: H - B - T, fill: "transparent" });
+  hit.addEventListener("mousemove", ev => { const r = s.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * W;
+    const i = Math.round((px - L) / (W - L - 8) * (n - 1)); if (i < 0 || i >= n || sp[i] === null) return hideTip();
+    tipAt(ev, `${i - 120 > 0 ? "+" : ""}${i - 120} s: ${sp[i]} km/h`); });
+  hit.addEventListener("mouseleave", hideTip);
+}
+
+function explain(c) {
+  const k = c.human.claim, llmTop = c.classes[c.preds["LLM zero-shot"].indexOf(Math.max(...c.preds["LLM zero-shot"]))];
+  const deb = c.preds["Fine-tuned DeBERTa"], debTop = deb ? c.classes[deb.indexOf(Math.max(...deb))] : null;
+  const msg = c.laps.find(x => x.lap === c.lap), pre = c.laps.find(x => x.lap === c.lap - 3);
+  let s = `<b>${c.driver}</b> (${c.team}), ${c.race} ${c.year}, lap ${c.lap} of ${c.race_laps}. The human labelled this as <b>${NICE[k]}</b>. `;
+  s += llmTop === k ? `The zero-shot LLM agrees. ` : `The zero-shot LLM says <b>${NICE[llmTop]}</b>. `;
+  if (debTop) s += debTop === k ? `So does the fine-tuned DeBERTa. ` : `The fine-tuned DeBERTa says <b>${NICE[debTop]}</b>. `;
+  if (c.showcase === "failure") s += `<br><b>Why it fails:</b> the speech-to-text produced “Enjoy one more tea guys”, almost certainly a transcription error, so every text model is reading the wrong words. Errors early in the pipeline carry through to the end.`;
+  else if (k === "NO_SENSOR" && debTop !== k) s += `<br><b>Why the LLM wins here:</b> brakes can't be checked from public car data, so the category is “can't be checked”. The LLM was <i>told</i> that rule; DeBERTa had to guess it from ~250 examples and lumped brakes in with tyres.`;
+  if (msg && msg.res !== null && pre && pre.res !== null) s += `<br>Car check: this lap was ${msg.res > 0 ? "+" : ""}${msg.res.toFixed(2)} s vs expected, and 3 laps earlier (placebo) ${pre.res > 0 ? "+" : ""}${pre.res.toFixed(2)} s. Across all claims, telemetry did not confirm claims better than the placebo window.`;
+  $("explain").innerHTML = s;
+}
+
+function tick() {
+  const t = audio.currentTime; drawWave(cur, t);
+  document.querySelectorAll("#transcript .w").forEach(w => w.classList.toggle("now", t >= +w.dataset.s && t < +w.dataset.e));
+  if (!audio.paused) raf = requestAnimationFrame(tick);
+}
+function show(i) {
+  audio.pause(); cancelAnimationFrame(raf); cur = C[i];
+  document.querySelectorAll(".clip").forEach((b, k) => b.classList.toggle("on", k === i));
+  audio.src = cur.audio; $("play").textContent = "▶";
+  $("meta").textContent = `${cur.driver} · ${cur.race} ${cur.year} · ${cur.dur.toFixed(1)} s`;
+  drawWave(cur); drawTranscript(cur); drawClaims(cur); drawArousal(cur); drawLaps(cur); drawSpeed(cur); explain(cur);
+}
+$("play").onclick = () => { if (audio.paused) audio.play(); else audio.pause(); };
+audio.onplay = () => { $("play").textContent = "❚❚"; tick(); };
+audio.onpause = audio.onended = () => { $("play").textContent = "▶"; drawWave(cur, audio.currentTime); };
+$("wave").onclick = ev => { const r = ev.target.getBoundingClientRect(); audio.currentTime = (ev.clientX - r.left) / r.width * cur.dur; drawWave(cur, audio.currentTime); };
+addEventListener("resize", () => cur && drawWave(cur, audio.currentTime));
+
+const tip = $("tip");
+function tipAt(ev, txt) { tip.textContent = txt; tip.style.left = ev.clientX + 12 + "px"; tip.style.top = ev.clientY + 12 + "px"; tip.style.opacity = 1; }
+function hideTip() { tip.style.opacity = 0; }
+document.addEventListener("mousemove", ev => { const t = ev.target.closest("[data-tip]"); if (t) tipAt(ev, t.dataset.tip); else if (!ev.target.closest("#speed")) hideTip(); });
+show(0);
+</script>
+</body>
+</html>

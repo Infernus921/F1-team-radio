@@ -1,0 +1,22 @@
+# Python 3.13 (3.11+ should work). Versions are those the results were produced with.
+# Install PyTorch from the CUDA index first:
+#   pip install torch==2.11.0 torchaudio==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0
+torchaudio==2.11.0
+numpy==2.5.3
+pandas==2.3.3
+pyarrow==25.0.1
+PyYAML==6.0.3
+soundfile==0.14.0
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib==3.11.2
+pytest==9.1.1
+pyannote.audio==4.0.7
+faster-whisper==1.2.1
+fastf1==3.8.3
+transformers==5.20.1
+sentencepiece==0.2.2
+statsmodels==0.15.0
+jiwer==4.0.0
+huggingface_hub==1.33.0

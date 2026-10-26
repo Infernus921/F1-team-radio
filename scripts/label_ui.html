@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speaker Attribution Labels</title>
+<style>
+  :root { --bg:#f7f7f5; --fg:#1d1d1b; --muted:#6b6b66; --card:#fff; --line:#e3e3de; --accent:#1f5fbf; --done:#2e7d4f; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161615; --fg:#ececea; --muted:#9a9a94; --card:#20201f; --line:#34342f; --accent:#6ea0ec; --done:#62b487; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.45 system-ui, sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:18px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px; }
+  .meta { display:flex; justify-content:space-between; color:var(--muted); font-size:14px; margin-bottom:14px; }
+  .bar { height:6px; background:var(--line); border-radius:3px; overflow:hidden; margin-bottom:18px; }
+  .bar > div { height:100%; background:var(--accent); width:0; transition:width .2s; }
+  .play { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
+  button { font:inherit; border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:8px; padding:10px 14px; cursor:pointer; }
+  button:hover { border-color:var(--accent); }
+  .labels { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; }
+  .labels button { text-align:left; }
+  .labels button.sel { border-color:var(--accent); outline:2px solid var(--accent); }
+  kbd { font:12px ui-monospace, monospace; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:0 5px; margin-right:6px; }
+  .help { color:var(--muted); font-size:13px; margin-top:18px; }
+  .help dt { font-weight:600; color:var(--fg); }
+  .help dd { margin:0 0 6px; }
+  .ok { color:var(--done); font-weight:600; }
+  @media (max-width:520px) { .labels { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Who is speaking in this turn?</h1>
+  <div class="sub">Judge by voice only. Annotator: <span id="ann"></span></div>
+  <div class="card">
+    <div class="meta"><span id="pos"></span><span id="evalc"></span></div>
+    <div class="bar"><div id="bar"></div></div>
+    <div class="play">
+      <button id="replay"><kbd>Space</kbd>Replay turn</button>
+      <button id="full"><kbd>C</kbd>Play whole clip</button>
+      <button id="back"><kbd>⌫</kbd>Back</button>
+    </div>
+    <div class="labels" id="labels"></div>
+  </div>
+  <dl class="help">
+    <dt>Driver</dt><dd>The driver of the car, usually with engine or wind noise behind them.</dd>
+    <dt>Engineer</dt><dd>Anyone on the pit wall speaking to the driver (race engineer, performance engineer, team boss).</dd>
+    <dt>Mixed</dt><dd>The turn clearly contains both the driver and someone else.</dd>
+    <dt>Other voice</dt><dd>Someone who isn't this car's driver or its pit wall, e.g. a broadcast commentator.</dd>
+    <dt>No speech</dt><dd>Noise, engine or silence only.</dd>
+    <dt>Unsure</dt><dd>Speech is present but you can't tell who. Use it honestly; it's excluded, not penalised.</dd>
+  </dl>
+</main>
+<audio id="aud"></audio>
+<script>
+const LABELS = [["DRIVER","Driver"],["ENGINEER","Engineer"],["MIXED","Mixed"],["OTHER","Other voice"],["NOSPEECH","No speech"],["UNSURE","Unsure"]];
+let S, idx = 0;
+const aud = document.getElementById("aud");
+const $ = id => document.getElementById(id);
+
+function playSeg() { aud.src = "/seg?item=" + encodeURIComponent(S.items[idx].item_id); aud.play().catch(()=>{}); }
+function playFull() { aud.src = "/clip?item=" + encodeURIComponent(S.items[idx].item_id); aud.play().catch(()=>{}); }
+
+function render() {
+  const n = S.items.length, done = Object.keys(S.labels).length;
+  const ev = Object.values(S.labels).filter(l => l === "DRIVER" || l === "ENGINEER").length;
+  if (idx >= n) {
+    $("pos").textContent = `All ${n} items labelled`;
+    $("labels").innerHTML = '<p class="ok">Finished. You can close this tab.</p>';
+    return;
+  }
+  const it = S.items[idx], cur = S.labels[it.item_id];
+  $("pos").textContent = `Item ${idx+1} of ${n} · ${it.dur}s`;
+  $("evalc").innerHTML = ev >= 300 ? `<span class="ok">${ev} driver/engineer labels (target reached)</span>` : `${ev} / 300 driver/engineer labels`;
+  $("bar").style.width = (100*done/n) + "%";
+  $("labels").innerHTML = "";
+  LABELS.forEach(([k, name], i) => {
+    const b = document.createElement("button");
+    b.innerHTML = `<kbd>${i+1}</kbd>${name}`;
+    if (cur === k) b.className = "sel";
+    b.onclick = () => choose(k);
+    $("labels").appendChild(b);
+  });
+  playSeg();
+}
+
+async function choose(k) {
+  const it = S.items[idx];
+  await fetch("/label", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({item_id: it.item_id, label: k}) });
+  S.labels[it.item_id] = k;
+  idx++;
+  while (idx < S.items.length && S.labels[S.items[idx].item_id]) idx++;
+  render();
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key >= "1" && e.key <= "6") choose(LABELS[+e.key-1][0]);
+  else if (e.key === " ") { e.preventDefault(); playSeg(); }
+  else if (e.key === "c" || e.key === "C") playFull();
+  else if (e.key === "Backspace") { e.preventDefault(); if (idx > 0) { idx--; render(); } }
+});
+$("replay").onclick = playSeg; $("full").onclick = playFull;
+$("back").onclick = () => { if (idx > 0) { idx--; render(); } };
+
+fetch("/state").then(r => r.json()).then(s => {
+  S = s; $("ann").textContent = s.annotator;
+  idx = S.items.findIndex(it => !S.labels[it.item_id]);
+  if (idx < 0) idx = S.items.length;
+  render();
+});
+</script>
+</body>
+</html>

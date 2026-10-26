@@ -1,0 +1,726 @@
+{
+ "counts": {
+  "labelled_driver_items": 317,
+  "by_phase": {
+   "race": 250,
+   "post_race": 53,
+   "pre_race": 12,
+   "no_laps": 2
+  },
+  "in_race_graded_items": 250,
+  "claim_counts_in_race": {
+   "NO_CLAIM": 72,
+   "GRIP_DEG": 45,
+   "NO_SENSOR": 38,
+   "REL_PACE": 30,
+   "INCIDENT": 30,
+   "TRAFFIC": 24,
+   "POWER": 11
+  }
+ },
+ "placebo_shift_laps": 3,
+ "claims": {
+  "GRIP_DEG": {
+   "n_in_race": 45,
+   "primary_rule": "GRIP_DEG@0.3",
+   "thresholds": {
+    "GRIP_DEG@0.1": {
+     "n_gradeable": 42,
+     "consistency": 0.3571,
+     "base_rate_matched": 0.3552,
+     "other_claim_rate": 0.4088,
+     "placebo_rate": 0.3488,
+     "vs_base": {
+      "diff": 0.002,
+      "ci95": [
+       -0.1443,
+       0.1466
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.0517,
+      "ci95": [
+       -0.2112,
+       0.1071
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0083,
+      "ci95": [
+       -0.1475,
+       0.1595
+      ]
+     }
+    },
+    "GRIP_DEG@0.2": {
+     "n_gradeable": 42,
+     "consistency": 0.3333,
+     "base_rate_matched": 0.2869,
+     "other_claim_rate": 0.3481,
+     "placebo_rate": 0.3488,
+     "vs_base": {
+      "diff": 0.0465,
+      "ci95": [
+       -0.0906,
+       0.1872
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.0147,
+      "ci95": [
+       -0.171,
+       0.1414
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.0155,
+      "ci95": [
+       -0.1634,
+       0.129
+      ]
+     }
+    },
+    "GRIP_DEG@0.3": {
+     "n_gradeable": 42,
+     "consistency": 0.2381,
+     "base_rate_matched": 0.2266,
+     "other_claim_rate": 0.3094,
+     "placebo_rate": 0.2791,
+     "vs_base": {
+      "diff": 0.0115,
+      "ci95": [
+       -0.1131,
+       0.1408
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.0713,
+      "ci95": [
+       -0.2198,
+       0.071
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.041,
+      "ci95": [
+       -0.1804,
+       0.0924
+      ]
+     }
+    },
+    "GRIP_DEG@0.5": {
+     "n_gradeable": 42,
+     "consistency": 0.1429,
+     "base_rate_matched": 0.1433,
+     "other_claim_rate": 0.1989,
+     "placebo_rate": 0.1395,
+     "vs_base": {
+      "diff": -0.0004,
+      "ci95": [
+       -0.0921,
+       0.0953
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.056,
+      "ci95": [
+       -0.1795,
+       0.0743
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0033,
+      "ci95": [
+       -0.1316,
+       0.1362
+      ]
+     }
+    },
+    "GRIP_DEG@0.8": {
+     "n_gradeable": 42,
+     "consistency": 0.0714,
+     "base_rate_matched": 0.0806,
+     "other_claim_rate": 0.1271,
+     "placebo_rate": 0.0,
+     "vs_base": {
+      "diff": -0.0092,
+      "ci95": [
+       -0.0677,
+       0.0627
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.0556,
+      "ci95": [
+       -0.1477,
+       0.0451
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0714,
+      "ci95": [
+       0.0,
+       0.1539
+      ]
+     }
+    }
+   }
+  },
+  "TRAFFIC": {
+   "n_in_race": 24,
+   "primary_rule": "TRAFFIC@1.5",
+   "thresholds": {
+    "TRAFFIC@1.0": {
+     "n_gradeable": 22,
+     "consistency": 0.5,
+     "base_rate_matched": 0.3565,
+     "other_claim_rate": 0.3085,
+     "placebo_rate": 0.45,
+     "vs_base": {
+      "diff": 0.1435,
+      "ci95": [
+       -0.0718,
+       0.3168
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.1915,
+      "ci95": [
+       -0.0276,
+       0.3955
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.05,
+      "ci95": [
+       -0.25,
+       0.3092
+      ]
+     }
+    },
+    "TRAFFIC@1.5": {
+     "n_gradeable": 22,
+     "consistency": 0.6364,
+     "base_rate_matched": 0.4898,
+     "other_claim_rate": 0.4328,
+     "placebo_rate": 0.5,
+     "vs_base": {
+      "diff": 0.1465,
+      "ci95": [
+       -0.0393,
+       0.2949
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.2035,
+      "ci95": [
+       -0.0112,
+       0.3991
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.1364,
+      "ci95": [
+       -0.1796,
+       0.3793
+      ]
+     }
+    },
+    "TRAFFIC@2.0": {
+     "n_gradeable": 22,
+     "consistency": 0.7273,
+     "base_rate_matched": 0.5658,
+     "other_claim_rate": 0.5522,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.1615,
+      "ci95": [
+       -0.0022,
+       0.2999
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.175,
+      "ci95": [
+       -0.0171,
+       0.3539
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.1273,
+      "ci95": [
+       -0.1722,
+       0.3595
+      ]
+     }
+    },
+    "TRAFFIC@3.0": {
+     "n_gradeable": 22,
+     "consistency": 0.7727,
+     "base_rate_matched": 0.6786,
+     "other_claim_rate": 0.7164,
+     "placebo_rate": 0.75,
+     "vs_base": {
+      "diff": 0.0941,
+      "ci95": [
+       -0.0514,
+       0.2215
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0563,
+      "ci95": [
+       -0.1154,
+       0.2226
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0227,
+      "ci95": [
+       -0.2175,
+       0.2306
+      ]
+     }
+    }
+   }
+  },
+  "REL_PACE": {
+   "n_in_race": 30,
+   "primary_rule": "REL_PACE@0.3",
+   "thresholds": {
+    "REL_PACE@0.15": {
+     "n_gradeable": 30,
+     "consistency": 0.9667,
+     "base_rate_matched": 0.9784,
+     "other_claim_rate": 0.9765,
+     "placebo_rate": 0.9333,
+     "vs_base": {
+      "diff": -0.0117,
+      "ci95": [
+       -0.0788,
+       0.0241
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.0099,
+      "ci95": [
+       -0.0937,
+       0.0385
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0333,
+      "ci95": [
+       0.0,
+       0.1071
+      ]
+     }
+    },
+    "REL_PACE@0.3": {
+     "n_gradeable": 30,
+     "consistency": 0.8,
+     "base_rate_matched": 0.8737,
+     "other_claim_rate": 0.9155,
+     "placebo_rate": 0.8,
+     "vs_base": {
+      "diff": -0.0737,
+      "ci95": [
+       -0.2188,
+       0.05
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.1155,
+      "ci95": [
+       -0.2665,
+       0.0147
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0,
+      "ci95": [
+       -0.1667,
+       0.1667
+      ]
+     }
+    },
+    "REL_PACE@0.5": {
+     "n_gradeable": 30,
+     "consistency": 0.6667,
+     "base_rate_matched": 0.7175,
+     "other_claim_rate": 0.7512,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": -0.0508,
+      "ci95": [
+       -0.2414,
+       0.1273
+      ]
+     },
+     "vs_other_claims": {
+      "diff": -0.0845,
+      "ci95": [
+       -0.2846,
+       0.104
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0667,
+      "ci95": [
+       -0.1667,
+       0.2903
+      ]
+     }
+    }
+   }
+  },
+  "INCIDENT": {
+   "n_in_race": 30,
+   "primary_rule": "INCIDENT@L-1..L+2",
+   "thresholds": {
+    "INCIDENT@L-1..L+2": {
+     "n_gradeable": 28,
+     "consistency": 0.1071,
+     "base_rate_matched": 0.0547,
+     "other_claim_rate": 0.055,
+     "placebo_rate": 0.1,
+     "vs_base": {
+      "diff": 0.0524,
+      "ci95": [
+       -0.0392,
+       0.1664
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0521,
+      "ci95": [
+       -0.0591,
+       0.1967
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0071,
+      "ci95": [
+       -0.1692,
+       0.1481
+      ]
+     }
+    },
+    "INCIDENT@L..L+1": {
+     "n_gradeable": 28,
+     "consistency": 0.0714,
+     "base_rate_matched": 0.0307,
+     "other_claim_rate": 0.0321,
+     "placebo_rate": 0.05,
+     "vs_base": {
+      "diff": 0.0407,
+      "ci95": [
+       -0.0362,
+       0.1391
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0393,
+      "ci95": [
+       -0.0445,
+       0.1548
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.0214,
+      "ci95": [
+       -0.1364,
+       0.1538
+      ]
+     }
+    },
+    "INCIDENT@L-2..L+3": {
+     "n_gradeable": 28,
+     "consistency": 0.1429,
+     "base_rate_matched": 0.0787,
+     "other_claim_rate": 0.078,
+     "placebo_rate": 0.15,
+     "vs_base": {
+      "diff": 0.0641,
+      "ci95": [
+       -0.0393,
+       0.1924
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0649,
+      "ci95": [
+       -0.0591,
+       0.2187
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.0071,
+      "ci95": [
+       -0.119,
+       0.0952
+      ]
+     }
+    }
+   }
+  },
+  "POWER": {
+   "n_in_race": 11,
+   "primary_rule": "POWER@8kmh_500rpm",
+   "thresholds": {
+    "POWER@4kmh_300rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.7,
+     "base_rate_matched": 0.3395,
+     "other_claim_rate": 0.3366,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.3605,
+      "ci95": [
+       0.0789,
+       0.6175
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.3634,
+      "ci95": [
+       0.0192,
+       0.6634
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.1,
+      "ci95": [
+       -0.2636,
+       0.4432
+      ]
+     }
+    },
+    "POWER@4kmh_500rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.7,
+     "base_rate_matched": 0.3148,
+     "other_claim_rate": 0.2976,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.3852,
+      "ci95": [
+       0.1033,
+       0.6419
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.4024,
+      "ci95": [
+       0.0542,
+       0.6992
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.1,
+      "ci95": [
+       -0.2364,
+       0.4545
+      ]
+     }
+    },
+    "POWER@4kmh_1000rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.7,
+     "base_rate_matched": 0.3148,
+     "other_claim_rate": 0.2976,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.3852,
+      "ci95": [
+       0.1034,
+       0.6436
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.4024,
+      "ci95": [
+       0.0592,
+       0.7083
+      ]
+     },
+     "vs_placebo": {
+      "diff": 0.1,
+      "ci95": [
+       -0.2455,
+       0.4501
+      ]
+     }
+    },
+    "POWER@8kmh_300rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.4,
+     "base_rate_matched": 0.224,
+     "other_claim_rate": 0.2488,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.176,
+      "ci95": [
+       -0.1128,
+       0.4724
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.1512,
+      "ci95": [
+       -0.1476,
+       0.4718
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.2,
+      "ci95": [
+       -0.5667,
+       0.1136
+      ]
+     }
+    },
+    "POWER@8kmh_500rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.4,
+     "base_rate_matched": 0.1885,
+     "other_claim_rate": 0.2,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.2115,
+      "ci95": [
+       -0.0798,
+       0.5021
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.2,
+      "ci95": [
+       -0.1091,
+       0.5364
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.2,
+      "ci95": [
+       -0.5889,
+       0.1779
+      ]
+     }
+    },
+    "POWER@8kmh_1000rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.4,
+     "base_rate_matched": 0.1885,
+     "other_claim_rate": 0.2,
+     "placebo_rate": 0.6,
+     "vs_base": {
+      "diff": 0.2115,
+      "ci95": [
+       -0.0745,
+       0.5018
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.2,
+      "ci95": [
+       -0.101,
+       0.5378
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.2,
+      "ci95": [
+       -0.5574,
+       0.1546
+      ]
+     }
+    },
+    "POWER@15kmh_300rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.2,
+     "base_rate_matched": 0.1631,
+     "other_claim_rate": 0.2,
+     "placebo_rate": 0.4,
+     "vs_base": {
+      "diff": 0.0369,
+      "ci95": [
+       -0.1743,
+       0.2962
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0,
+      "ci95": [
+       -0.2299,
+       0.3021
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.2,
+      "ci95": [
+       -0.4455,
+       0.0
+      ]
+     }
+    },
+    "POWER@15kmh_500rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.2,
+     "base_rate_matched": 0.1234,
+     "other_claim_rate": 0.1463,
+     "placebo_rate": 0.4,
+     "vs_base": {
+      "diff": 0.0766,
+      "ci95": [
+       -0.1281,
+       0.327
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0537,
+      "ci95": [
+       -0.1651,
+       0.3458
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.2,
+      "ci95": [
+       -0.4669,
+       0.0
+      ]
+     }
+    },
+    "POWER@15kmh_1000rpm": {
+     "n_gradeable": 10,
+     "consistency": 0.2,
+     "base_rate_matched": 0.1234,
+     "other_claim_rate": 0.1463,
+     "placebo_rate": 0.4,
+     "vs_base": {
+      "diff": 0.0766,
+      "ci95": [
+       -0.1234,
+       0.3247
+      ]
+     },
+     "vs_other_claims": {
+      "diff": 0.0537,
+      "ci95": [
+       -0.1706,
+       0.3428
+      ]
+     },
+     "vs_placebo": {
+      "diff": -0.2,
+      "ci95": [
+       -0.4558,
+       0.0
+      ]
+     }
+    }
+   }
+  }
+ }
+}

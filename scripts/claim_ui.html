@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim and Arousal Labels</title>
+<style>
+  :root { --bg:#f7f7f5; --fg:#1d1d1b; --muted:#6b6b66; --card:#fff; --line:#e3e3de; --accent:#1f5fbf; --done:#2e7d4f; --warn:#a4541a; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161615; --fg:#ececea; --muted:#9a9a94; --card:#20201f; --line:#34342f; --accent:#6ea0ec; --done:#62b487; --warn:#e0955a; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.45 system-ui, sans-serif; }
+  main { max-width:780px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:18px; margin:0 0 4px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:18px 0 8px; font-weight:600; }
+  .sub { color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px; }
+  .meta { display:flex; justify-content:space-between; color:var(--muted); font-size:14px; margin-bottom:12px; }
+  .bar { height:6px; background:var(--line); border-radius:3px; overflow:hidden; margin-bottom:16px; }
+  .bar > div { height:100%; background:var(--accent); width:0; }
+  .text { background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:15px; min-height:44px; }
+  .text small { display:block; color:var(--muted); font-size:12px; margin-bottom:2px; }
+  .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; }
+  .grid3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; }
+  button { font:inherit; border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:8px; padding:9px 12px; cursor:pointer; text-align:left; }
+  button.sel { outline:2px solid var(--accent); border-color:var(--accent); }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; text-align:center; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:14px; }
+  kbd { font:12px ui-monospace, monospace; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:0 5px; margin-right:4px; }
+  label { font-size:14px; }
+  .warn { color:var(--warn); font-size:14px; min-height:20px; margin-top:8px; }
+  .ok { color:var(--done); font-weight:600; }
+  @media (max-width:560px) { .grid { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>What does the driver claim, and how aroused do they sound?</h1>
+  <div class="sub">See labels/ANNOTATION_GUIDE.md. Annotator: <span id="ann"></span></div>
+  <div class="card">
+    <div class="meta"><span id="pos"></span><span id="cnt"></span></div>
+    <div class="bar"><div id="bar"></div></div>
+    <div class="row" style="margin-top:0;margin-bottom:12px">
+      <button id="replay"><kbd>Space</kbd>Replay</button>
+      <button id="full"><kbd>C</kbd>Whole clip</button>
+      <button id="back">Back</button>
+    </div>
+    <div class="text"><small>Transcript (may contain ASR errors)</small><span id="txt"></span></div>
+    <h2>Claim type</h2>
+    <div class="grid" id="claims"></div>
+    <h2>Arousal (voice)</h2>
+    <div class="grid3" id="arousal"></div>
+    <div class="row">
+      <label><input type="checkbox" id="multi"> Multi-claim</label>
+      <label><input type="checkbox" id="notdrv"> <kbd>N</kbd>Not the driver</label>
+      <span style="flex:1"></span>
+      <button class="primary" id="save"><kbd style="color:#fff;border-color:#fff8">Enter</kbd>Save &amp; next</button>
+    </div>
+    <div class="warn" id="warn"></div>
+  </div>
+</main>
+<audio id="aud"></audio>
+<script>
+const CLAIMS = ["GRIP_DEG","TRAFFIC","REL_PACE","INCIDENT","POWER","NO_SENSOR","NO_CLAIM"];
+const AROUSAL = [["1","q","Low · calm"],["2","w","Mid · raised"],["3","e","High · shouting"]];
+let S, idx = 0, cur = {};
+const $ = id => document.getElementById(id);
+const aud = $("aud");
+function playSeg() { aud.src = "/seg?item=" + encodeURIComponent(S.items[idx].item_id); aud.play().catch(()=>{}); }
+function playFull() { aud.src = "/clip?item=" + encodeURIComponent(S.items[idx].item_id); aud.play().catch(()=>{}); }
+function drawButtons() {
+  $("claims").innerHTML = ""; $("arousal").innerHTML = "";
+  CLAIMS.forEach((c, i) => { const b = document.createElement("button"); b.innerHTML = `<kbd>${i+1}</kbd>${c}`;
+    if (cur.claim === c) b.className = "sel"; b.onclick = () => { cur.claim = c; drawButtons(); }; $("claims").appendChild(b); });
+  AROUSAL.forEach(([v, k, name]) => { const b = document.createElement("button"); b.innerHTML = `<kbd>${k.toUpperCase()}</kbd>${name}`;
+    if (cur.arousal === v) b.className = "sel"; b.onclick = () => { cur.arousal = v; drawButtons(); }; $("arousal").appendChild(b); });
+}
+function render() {
+  const n = S.items.length, done = Object.keys(S.done).length;
+  $("bar").style.width = (100*done/n) + "%";
+  $("cnt").textContent = `${done} saved`;
+  if (idx >= n) { $("pos").innerHTML = `<span class="ok">All ${n} items done.</span>`; return; }
+  const it = S.items[idx], prev = S.done[it.item_id];
+  cur = prev ? { claim: prev.claim, arousal: prev.arousal } : {};
+  $("multi").checked = prev ? prev.multi_claim === "1" : false;
+  $("notdrv").checked = prev ? prev.not_driver === "1" : false;
+  $("pos").textContent = `Item ${idx+1} of ${n} · ${it.dur}s`;
+  $("txt").textContent = it.text || "(no transcript)";
+  $("warn").textContent = "";
+  drawButtons(); playSeg();
+}
+async function save() {
+  const nd = $("notdrv").checked;
+  if (!nd && (!cur.claim || !cur.arousal)) { $("warn").textContent = "Pick a claim type and an arousal level (or tick Not the driver)."; return; }
+  const it = S.items[idx];
+  const body = { item_id: it.item_id, claim: nd ? "" : cur.claim, arousal: nd ? "" : cur.arousal, multi_claim: $("multi").checked, not_driver: nd };
+  await fetch("/save", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body) });
+  S.done[it.item_id] = { claim: body.claim, arousal: body.arousal, multi_claim: body.multi_claim ? "1":"0", not_driver: nd ? "1":"0" };
+  idx++; render();
+}
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "INPUT") return;
+  if (e.key >= "1" && e.key <= "7") { cur.claim = CLAIMS[+e.key-1]; drawButtons(); }
+  else if ("qwe".includes(e.key.toLowerCase()) && e.key.length === 1) { cur.arousal = AROUSAL["qwe".indexOf(e.key.toLowerCase())][0]; drawButtons(); }
+  else if (e.key === "n" || e.key === "N") $("notdrv").checked = !$("notdrv").checked;
+  else if (e.key === " ") { e.preventDefault(); playSeg(); }
+  else if (e.key === "c" || e.key === "C") playFull();
+  else if (e.key === "Enter") { e.preventDefault(); save(); }
+});
+$("replay").onclick = playSeg; $("full").onclick = playFull; $("save").onclick = save;
+$("back").onclick = () => { if (idx > 0) { idx--; render(); } };
+fetch("/state").then(r => r.json()).then(s => {
+  S = s; $("ann").textContent = s.annotator;
+  idx = S.items.findIndex(it => !S.done[it.item_id]); if (idx < 0) idx = S.items.length;
+  render();
+});
+</script>
+</body>
+</html>

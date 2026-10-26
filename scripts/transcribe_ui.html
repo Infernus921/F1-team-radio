@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radio Transcription</title>
+<style>
+  :root { --bg:#f7f7f5; --fg:#1d1d1b; --muted:#6b6b66; --card:#fff; --line:#e3e3de; --accent:#1f5fbf; --done:#2e7d4f; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161615; --fg:#ececea; --muted:#9a9a94; --card:#20201f; --line:#34342f; --accent:#6ea0ec; --done:#62b487; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.45 system-ui, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:18px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px; }
+  .meta { display:flex; justify-content:space-between; color:var(--muted); font-size:14px; margin-bottom:12px; }
+  .bar { height:6px; background:var(--line); border-radius:3px; overflow:hidden; margin-bottom:16px; }
+  .bar > div { height:100%; background:var(--accent); width:0; }
+  audio { width:100%; margin-bottom:12px; }
+  textarea { width:100%; min-height:120px; font:inherit; padding:10px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg); resize:vertical; }
+  .row { display:flex; gap:8px; align-items:center; margin-top:12px; flex-wrap:wrap; }
+  button { font:inherit; border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:8px; padding:9px 14px; cursor:pointer; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  kbd { font:12px ui-monospace, monospace; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:0 5px; }
+  .rules { color:var(--muted); font-size:13px; margin-top:16px; }
+  .rules li { margin-bottom:4px; }
+  details { margin-top:16px; font-size:13px; color:var(--muted); }
+  details div { margin-top:6px; line-height:1.7; }
+  .ok { color:var(--done); font-weight:600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Type exactly what is said</h1>
+  <div class="sub">Both speakers, in order. Annotator: <span id="ann"></span></div>
+  <div class="card">
+    <div class="meta"><span id="pos"></span><span id="yr"></span></div>
+    <div class="bar"><div id="bar"></div></div>
+    <audio id="aud" controls></audio>
+    <textarea id="txt" placeholder="Type what you hear…"></textarea>
+    <div class="row">
+      <button class="primary" id="save">Save &amp; next <kbd>Ctrl+Enter</kbd></button>
+      <button id="replay">Replay <kbd>Ctrl+Space</kbd></button>
+      <button id="back">Back</button>
+      <label><input type="checkbox" id="unint"> Mostly unintelligible</label>
+    </div>
+  </div>
+  <ul class="rules">
+    <li>Write words as spoken, no speaker names. Don't fix grammar.</li>
+    <li>Numbers as you'd say them are fine ("one point two" or "1.2"); scoring normalises both.</li>
+    <li>A word you can't make out: <b>[?]</b>. Bleeped swearing: <b>[bleep]</b>.</li>
+  </ul>
+  <details><summary>Glossary (names &amp; jargon)</summary><div id="gloss"></div></details>
+</main>
+<script>
+let S, idx = 0;
+const $ = id => document.getElementById(id);
+function render() {
+  const n = S.items.length, done = Object.keys(S.done).length;
+  $("bar").style.width = (100*done/n) + "%";
+  if (idx >= n) { $("pos").innerHTML = `<span class="ok">All ${n} clips done.</span>`; return; }
+  const it = S.items[idx], prev = S.done[it.item_id];
+  $("pos").textContent = `Clip ${idx+1} of ${n} · ${done} saved`;
+  $("yr").textContent = it.year;
+  $("txt").value = prev ? prev.text : "";
+  $("unint").checked = prev ? prev.unintelligible === "1" : false;
+  $("aud").src = "/clip?item=" + encodeURIComponent(it.item_id);
+  $("aud").play().catch(()=>{});
+  $("txt").focus();
+}
+async function save() {
+  const it = S.items[idx];
+  const body = { item_id: it.item_id, text: $("txt").value, unintelligible: $("unint").checked };
+  await fetch("/save", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body) });
+  S.done[it.item_id] = { text: body.text, unintelligible: body.unintelligible ? "1" : "0" };
+  idx++; render();
+}
+$("save").onclick = save;
+$("replay").onclick = () => { $("aud").currentTime = 0; $("aud").play(); };
+$("back").onclick = () => { if (idx > 0) { idx--; render(); } };
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey && e.key === "Enter") { e.preventDefault(); save(); }
+  if (e.ctrlKey && e.key === " ") { e.preventDefault(); $("aud").currentTime = 0; $("aud").play(); }
+});
+fetch("/state").then(r => r.json()).then(s => {
+  S = s; $("ann").textContent = s.annotator;
+  const g = s.glossary || {};
+  $("gloss").textContent = [...(g.drivers || []), ...(g.terms || [])].join(" · ");
+  idx = S.items.findIndex(it => !S.done[it.item_id]); if (idx < 0) idx = S.items.length;
+  render();
+});
+</script>
+</body>
+</html>

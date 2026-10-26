@@ -1,0 +1,32 @@
+{
+  "n_input": 14681,
+  "n_kept": 14370,
+  "dropped_by_reason": {
+    "dup_audio_cross_race": 204,
+    "near_dup_contained": 107
+  },
+  "races_kept": 149,
+  "clips_per_year_kept": {
+    "2018": 1459,
+    "2019": 2036,
+    "2020": 2105,
+    "2021": 2792,
+    "2023": 2605,
+    "2024": 2704,
+    "2025": 669
+  },
+  "ts_shared_rows_kept": 934,
+  "id_ts_offset_s": {
+    "n_parsed": 14681,
+    "quantiles": {
+      "0.01": -21629.2,
+      "0.1": -70.3,
+      "0.25": -12.8,
+      "0.5": 3564.2,
+      "0.75": 3608.5,
+      "0.9": 7193.7,
+      "0.99": 32390.9
+    },
+    "note": "id time minus message_timestamp; interpretation deferred to Stage D"
+  }
+}

@@ -1,0 +1,557 @@
+{
+ "n_items": 317,
+ "n_not_driver_flagged": 133,
+ "claim_counts": {
+  "NO_CLAIM": 123,
+  "GRIP_DEG": 49,
+  "NO_SENSOR": 45,
+  "REL_PACE": 32,
+  "INCIDENT": 32,
+  "TRAFFIC": 25,
+  "POWER": 11
+ },
+ "kept_claims": [
+  "GRIP_DEG",
+  "INCIDENT",
+  "NO_CLAIM",
+  "NO_SENSOR",
+  "REL_PACE",
+  "TRAFFIC"
+ ],
+ "dropped_claims": {
+  "POWER": 11
+ },
+ "min_class": 20,
+ "hyperparams": {
+  "model": "microsoft/deberta-v3-base",
+  "max_len": 64,
+  "lr": 2e-05,
+  "epochs": 8,
+  "batch": 16,
+  "wd": 0.01,
+  "warmup": 0.1
+ },
+ "llm_zero_shot": "not run: no LLM API available",
+ "protocols": {
+  "cv5": {
+   "majority": {
+    "claim": {
+     "GRIP_DEG": {
+      "auc_pr": 0.1405,
+      "ci95": [
+       0.1048,
+       0.1852
+      ],
+      "prevalence": 0.1601,
+      "chance_auc_pr": 0.1753,
+      "chance_95pct": 0.222,
+      "n_pos": 49
+     },
+     "INCIDENT": {
+      "auc_pr": 0.0888,
+      "ci95": [
+       0.0593,
+       0.1318
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.1179,
+      "chance_95pct": 0.1586,
+      "n_pos": 32
+     },
+     "NO_CLAIM": {
+      "auc_pr": 0.3606,
+      "ci95": [
+       0.305,
+       0.4278
+      ],
+      "prevalence": 0.402,
+      "chance_auc_pr": 0.4175,
+      "chance_95pct": 0.4601,
+      "n_pos": 123
+     },
+     "NO_SENSOR": {
+      "auc_pr": 0.1278,
+      "ci95": [
+       0.0889,
+       0.178
+      ],
+      "prevalence": 0.1471,
+      "chance_auc_pr": 0.1628,
+      "chance_95pct": 0.2057,
+      "n_pos": 45
+     },
+     "REL_PACE": {
+      "auc_pr": 0.0945,
+      "ci95": [
+       0.0664,
+       0.1327
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.12,
+      "chance_95pct": 0.1701,
+      "n_pos": 32
+     },
+     "TRAFFIC": {
+      "auc_pr": 0.0665,
+      "ci95": [
+       0.0427,
+       0.1019
+      ],
+      "prevalence": 0.0817,
+      "chance_auc_pr": 0.0956,
+      "chance_95pct": 0.1372,
+      "n_pos": 25
+     },
+     "macro": {
+      "auc_pr": 0.1464,
+      "ci95": [
+       0.1417,
+       0.1596
+      ],
+      "no_skill": 0.1667,
+      "chance_auc_pr": 0.1815,
+      "chance_95pct": 0.1958
+     }
+    },
+    "arousal": {
+     "1": {
+      "auc_pr": 0.4741,
+      "ci95": [
+       0.4111,
+       0.5413
+      ],
+      "prevalence": 0.4984,
+      "chance_auc_pr": 0.5052,
+      "chance_95pct": 0.5525,
+      "n_pos": 158
+     },
+     "2": {
+      "auc_pr": 0.3673,
+      "ci95": [
+       0.3219,
+       0.4257
+      ],
+      "prevalence": 0.3975,
+      "chance_auc_pr": 0.4088,
+      "chance_95pct": 0.4581,
+      "n_pos": 126
+     },
+     "3": {
+      "auc_pr": 0.0858,
+      "ci95": [
+       0.0625,
+       0.1199
+      ],
+      "prevalence": 0.1041,
+      "chance_auc_pr": 0.1175,
+      "chance_95pct": 0.1488,
+      "n_pos": 33
+     },
+     "macro": {
+      "auc_pr": 0.3091,
+      "ci95": [
+       0.2933,
+       0.3322
+      ],
+      "no_skill": 0.3333,
+      "chance_auc_pr": 0.3438,
+      "chance_95pct": 0.3679
+     }
+    }
+   },
+   "context": {
+    "claim": {
+     "GRIP_DEG": {
+      "auc_pr": 0.1957,
+      "ci95": [
+       0.1448,
+       0.2733
+      ],
+      "prevalence": 0.1601,
+      "chance_auc_pr": 0.1753,
+      "chance_95pct": 0.222,
+      "n_pos": 49
+     },
+     "INCIDENT": {
+      "auc_pr": 0.2677,
+      "ci95": [
+       0.1387,
+       0.4361
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.1179,
+      "chance_95pct": 0.1586,
+      "n_pos": 32
+     },
+     "NO_CLAIM": {
+      "auc_pr": 0.6413,
+      "ci95": [
+       0.5554,
+       0.7296
+      ],
+      "prevalence": 0.402,
+      "chance_auc_pr": 0.4175,
+      "chance_95pct": 0.4601,
+      "n_pos": 123
+     },
+     "NO_SENSOR": {
+      "auc_pr": 0.1996,
+      "ci95": [
+       0.1326,
+       0.3029
+      ],
+      "prevalence": 0.1471,
+      "chance_auc_pr": 0.1628,
+      "chance_95pct": 0.2057,
+      "n_pos": 45
+     },
+     "REL_PACE": {
+      "auc_pr": 0.1222,
+      "ci95": [
+       0.0877,
+       0.1849
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.12,
+      "chance_95pct": 0.1701,
+      "n_pos": 32
+     },
+     "TRAFFIC": {
+      "auc_pr": 0.1282,
+      "ci95": [
+       0.0775,
+       0.2144
+      ],
+      "prevalence": 0.0817,
+      "chance_auc_pr": 0.0956,
+      "chance_95pct": 0.1372,
+      "n_pos": 25
+     },
+     "macro": {
+      "auc_pr": 0.2591,
+      "ci95": [
+       0.2376,
+       0.305
+      ],
+      "no_skill": 0.1667,
+      "chance_auc_pr": 0.1815,
+      "chance_95pct": 0.1958
+     }
+    },
+    "arousal": {
+     "1": {
+      "auc_pr": 0.6171,
+      "ci95": [
+       0.531,
+       0.7051
+      ],
+      "prevalence": 0.4984,
+      "chance_auc_pr": 0.5052,
+      "chance_95pct": 0.5525,
+      "n_pos": 158
+     },
+     "2": {
+      "auc_pr": 0.4501,
+      "ci95": [
+       0.388,
+       0.53
+      ],
+      "prevalence": 0.3975,
+      "chance_auc_pr": 0.4088,
+      "chance_95pct": 0.4581,
+      "n_pos": 126
+     },
+     "3": {
+      "auc_pr": 0.1341,
+      "ci95": [
+       0.0938,
+       0.2271
+      ],
+      "prevalence": 0.1041,
+      "chance_auc_pr": 0.1175,
+      "chance_95pct": 0.1488,
+      "n_pos": 33
+     },
+     "macro": {
+      "auc_pr": 0.4004,
+      "ci95": [
+       0.3706,
+       0.4495
+      ],
+      "no_skill": 0.3333,
+      "chance_auc_pr": 0.3438,
+      "chance_95pct": 0.3679
+     }
+    }
+   },
+   "tfidf": {
+    "claim": {
+     "GRIP_DEG": {
+      "auc_pr": 0.7107,
+      "ci95": [
+       0.6005,
+       0.8026
+      ],
+      "prevalence": 0.1601,
+      "chance_auc_pr": 0.1753,
+      "chance_95pct": 0.222,
+      "n_pos": 49
+     },
+     "INCIDENT": {
+      "auc_pr": 0.4582,
+      "ci95": [
+       0.3129,
+       0.6265
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.1179,
+      "chance_95pct": 0.1586,
+      "n_pos": 32
+     },
+     "NO_CLAIM": {
+      "auc_pr": 0.6153,
+      "ci95": [
+       0.5323,
+       0.7078
+      ],
+      "prevalence": 0.402,
+      "chance_auc_pr": 0.4175,
+      "chance_95pct": 0.4601,
+      "n_pos": 123
+     },
+     "NO_SENSOR": {
+      "auc_pr": 0.2452,
+      "ci95": [
+       0.1625,
+       0.3905
+      ],
+      "prevalence": 0.1471,
+      "chance_auc_pr": 0.1628,
+      "chance_95pct": 0.2057,
+      "n_pos": 45
+     },
+     "REL_PACE": {
+      "auc_pr": 0.1547,
+      "ci95": [
+       0.0995,
+       0.2564
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.12,
+      "chance_95pct": 0.1701,
+      "n_pos": 32
+     },
+     "TRAFFIC": {
+      "auc_pr": 0.1998,
+      "ci95": [
+       0.0971,
+       0.3656
+      ],
+      "prevalence": 0.0817,
+      "chance_auc_pr": 0.0956,
+      "chance_95pct": 0.1372,
+      "n_pos": 25
+     },
+     "macro": {
+      "auc_pr": 0.3973,
+      "ci95": [
+       0.3674,
+       0.4538
+      ],
+      "no_skill": 0.1667,
+      "chance_auc_pr": 0.1815,
+      "chance_95pct": 0.1958
+     }
+    },
+    "arousal": {
+     "1": {
+      "auc_pr": 0.654,
+      "ci95": [
+       0.5783,
+       0.7292
+      ],
+      "prevalence": 0.4984,
+      "chance_auc_pr": 0.5052,
+      "chance_95pct": 0.5525,
+      "n_pos": 158
+     },
+     "2": {
+      "auc_pr": 0.4366,
+      "ci95": [
+       0.3705,
+       0.5211
+      ],
+      "prevalence": 0.3975,
+      "chance_auc_pr": 0.4088,
+      "chance_95pct": 0.4581,
+      "n_pos": 126
+     },
+     "3": {
+      "auc_pr": 0.371,
+      "ci95": [
+       0.2324,
+       0.5351
+      ],
+      "prevalence": 0.1041,
+      "chance_auc_pr": 0.1175,
+      "chance_95pct": 0.1488,
+      "n_pos": 33
+     },
+     "macro": {
+      "auc_pr": 0.4872,
+      "ci95": [
+       0.4285,
+       0.5559
+      ],
+      "no_skill": 0.3333,
+      "chance_auc_pr": 0.3438,
+      "chance_95pct": 0.3679
+     }
+    }
+   },
+   "deberta": {
+    "claim": {
+     "GRIP_DEG": {
+      "auc_pr": 0.4927,
+      "ci95": [
+       0.368,
+       0.6283
+      ],
+      "prevalence": 0.1601,
+      "chance_auc_pr": 0.1753,
+      "chance_95pct": 0.222,
+      "n_pos": 49
+     },
+     "INCIDENT": {
+      "auc_pr": 0.3792,
+      "ci95": [
+       0.2304,
+       0.5637
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.1179,
+      "chance_95pct": 0.1586,
+      "n_pos": 32
+     },
+     "NO_CLAIM": {
+      "auc_pr": 0.7267,
+      "ci95": [
+       0.6528,
+       0.7958
+      ],
+      "prevalence": 0.402,
+      "chance_auc_pr": 0.4175,
+      "chance_95pct": 0.4601,
+      "n_pos": 123
+     },
+     "NO_SENSOR": {
+      "auc_pr": 0.2388,
+      "ci95": [
+       0.1544,
+       0.3773
+      ],
+      "prevalence": 0.1471,
+      "chance_auc_pr": 0.1628,
+      "chance_95pct": 0.2057,
+      "n_pos": 45
+     },
+     "REL_PACE": {
+      "auc_pr": 0.2339,
+      "ci95": [
+       0.136,
+       0.4076
+      ],
+      "prevalence": 0.1046,
+      "chance_auc_pr": 0.12,
+      "chance_95pct": 0.1701,
+      "n_pos": 32
+     },
+     "TRAFFIC": {
+      "auc_pr": 0.1115,
+      "ci95": [
+       0.0696,
+       0.188
+      ],
+      "prevalence": 0.0817,
+      "chance_auc_pr": 0.0956,
+      "chance_95pct": 0.1372,
+      "n_pos": 25
+     },
+     "macro": {
+      "auc_pr": 0.3638,
+      "ci95": [
+       0.3309,
+       0.425
+      ],
+      "no_skill": 0.1667,
+      "chance_auc_pr": 0.1815,
+      "chance_95pct": 0.1958
+     }
+    },
+    "arousal": {
+     "1": {
+      "auc_pr": 0.7195,
+      "ci95": [
+       0.6537,
+       0.7826
+      ],
+      "prevalence": 0.4984,
+      "chance_auc_pr": 0.5052,
+      "chance_95pct": 0.5525,
+      "n_pos": 158
+     },
+     "2": {
+      "auc_pr": 0.5233,
+      "ci95": [
+       0.4357,
+       0.6127
+      ],
+      "prevalence": 0.3975,
+      "chance_auc_pr": 0.4088,
+      "chance_95pct": 0.4581,
+      "n_pos": 126
+     },
+     "3": {
+      "auc_pr": 0.4838,
+      "ci95": [
+       0.3314,
+       0.6489
+      ],
+      "prevalence": 0.1041,
+      "chance_auc_pr": 0.1175,
+      "chance_95pct": 0.1488,
+      "n_pos": 33
+     },
+     "macro": {
+      "auc_pr": 0.5755,
+      "ci95": [
+       0.518,
+       0.6431
+      ],
+      "no_skill": 0.3333,
+      "chance_auc_pr": 0.3438,
+      "chance_95pct": 0.3679
+     }
+    }
+   },
+   "deberta_minus_context": {
+    "claim": {
+     "delta_macro_auc_pr": 0.1047,
+     "ci95": [
+      0.055,
+      0.1582
+     ],
+     "p_a_not_better": 0.0
+    },
+    "arousal": {
+     "delta_macro_auc_pr": 0.1751,
+     "ci95": [
+      0.0979,
+      0.2449
+     ],
+     "p_a_not_better": 0.0
+    }
+   }
+  }
+ }
+}

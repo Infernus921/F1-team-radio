@@ -1,0 +1,190 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>F1 Radio Project</title>
+<style>:root {
+  --ink: #16181d; --muted: #5b6070; --line: #e3e5ea; --bg: #ffffff; --tint: #f4f5f8;
+  --accent: #c8102e; --accent-ink: #ffffff; --good: #1d7a46; --bad: #b4232c;
+  --dark-bg: #15171c; --dark-ink: #f3f4f6; --dark-muted: #a9adb8;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #0d0e11; font-family: Calibri, "Segoe UI", Arial, sans-serif; color: var(--ink); }
+.slide { position: absolute; inset: 0; margin: auto; width: min(100vw, 177.78vh); height: min(56.25vw, 100vh);
+  background: var(--bg); display: none; overflow: hidden; container-type: inline-size; }
+.slide.active { display: block; }
+.inner { position: absolute; inset: 6cqw 6cqw 5cqw 6cqw; display: flex; flex-direction: column; gap: 2.2cqw; }
+.inner > h2 { margin-bottom: auto; }
+.inner > :last-child { margin-bottom: auto; }
+.slide.dark { background: var(--dark-bg); color: var(--dark-ink); }
+.slide.dark .list li, .slide.dark .lead { color: var(--dark-ink); }
+h1 { font-family: Cambria, Georgia, serif; font-size: 5.4cqw; line-height: 1.08; margin: 0; }
+h2 { font-family: Cambria, Georgia, serif; font-size: 3.1cqw; margin: 0; line-height: 1.15; }
+h3 { font-size: 1.9cqw; margin: 0 0 1cqw; }
+.kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; font-size: 1.3cqw; margin: 0 0 1.5cqw; }
+.title-wrap { margin: auto 0; }
+.sub { font-size: 2cqw; color: var(--dark-muted); margin: 2cqw 0 0; }
+.lead { font-size: 1.75cqw; color: var(--muted); margin: 0; }
+.caption, .small { font-size: 1.3cqw; color: var(--muted); margin: 0; }
+.list { margin: 0; padding-left: 1.6cqw; font-size: 1.6cqw; line-height: 1.4; }
+.list li { margin-bottom: .9cqw; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; align-items: center; flex: 1; min-height: 0; }
+.two.wide-left { grid-template-columns: 1.35fr 1fr; }
+.two.wider-left { grid-template-columns: 2.1fr 1fr; }
+.two.wider-left img { max-height: 38cqw; }
+.two img, .slide img { width: 100%; max-height: 32cqw; object-fit: contain; display: block; }
+.flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.2cqw; margin-top: 1cqw; }
+.step { background: var(--tint); border-radius: 1cqw; padding: 2cqw 1.4cqw; display: flex; flex-direction: column; gap: .8cqw; min-height: 16cqw; }
+.step .n { width: 2.6cqw; height: 2.6cqw; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font-weight: 700; font-size: 1.3cqw; }
+.step b { font-size: 1.75cqw; }
+.step small { font-size: 1.35cqw; color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 2cqw; }
+.stat { background: var(--tint); border-radius: 1cqw; padding: 2cqw; }
+.stat b { display: block; font-size: 4.2cqw; color: var(--accent); font-family: Cambria, Georgia, serif; line-height: 1; }
+.stat span { display: block; font-size: 1.35cqw; color: var(--muted); margin-top: .8cqw; }
+.callout { background: var(--tint); border-radius: 1cqw; padding: 2.2cqw; }
+.callout > b { display: block; font-size: 5cqw; color: var(--accent); font-family: Cambria, Georgia, serif; line-height: 1; }
+.callout > span { display: block; font-size: 1.35cqw; color: var(--muted); margin: .8cqw 0 1.2cqw; }
+.callout p { font-size: 1.45cqw; margin: 0; }
+.verdict { font-size: 1.45cqw; padding: 1.1cqw 1.4cqw; border-radius: .8cqw; margin: 1cqw 0 0; }
+.verdict.good { background: #e6f3ec; color: var(--good); }
+.verdict.bad { background: #fbe9ea; color: var(--bad); }
+table { border-collapse: collapse; width: 100%; font-size: 1.4cqw; }
+th, td { text-align: left; padding: .7cqw .8cqw; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 600; }
+td:not(:first-child), th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.hbar { display: grid; grid-template-columns: 14cqw 1fr 4cqw; align-items: center; gap: 1cqw; margin: 1.2cqw 0; font-size: 1.4cqw; }
+.hbar .track { background: var(--tint); height: 2cqw; border-radius: .5cqw; overflow: hidden; }
+.hbar .fill { display: block; height: 100%; background: var(--accent); border-radius: .5cqw; }
+.hbar .val { text-align: right; font-variant-numeric: tabular-nums; }
+.chips { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1cqw; }
+.chip { background: var(--tint); border-radius: 1cqw; padding: 1.4cqw 1cqw; font-size: 1.15cqw; color: var(--muted); }
+.chip b { display: block; font-size: 3cqw; color: var(--ink); font-family: Cambria, Georgia, serif; }
+.chip.dim { opacity: .45; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+.card { background: var(--tint); border-radius: 1cqw; padding: 1.8cqw; display: flex; flex-direction: column; gap: .7cqw; }
+.card b { font-size: 1.6cqw; }
+.card span { font-size: 1.3cqw; color: var(--muted); }
+.col { border-radius: 1cqw; padding: 2.4cqw; align-self: start; }
+.col.good { background: #1f3a2c; } .col.bad { background: #3d2124; }
+.col h3 { color: #fff; font-size: 2.1cqw; } .col .list { color: var(--dark-ink); font-size: 1.75cqw; }
+.pending { border: 2px dashed var(--line); border-radius: 1cqw; padding: 2cqw; color: var(--muted); font-size: 1.4cqw; text-align: center; }
+.pending.big { margin: auto 0; font-size: 2cqw; } .pending span { font-size: 1.2cqw; }
+.num { position: absolute; right: 2.4cqw; bottom: 1.6cqw; font-size: 1.1cqw; color: var(--muted); }
+.notes { display: none; }
+body.show-notes .notes { display: block; position: absolute; left: 0; right: 0; bottom: 0; background: #fff8d6; color: #333;
+  font-size: 1.2cqw; padding: 1cqw 2cqw; }
+code { font-size: .95em; }
+@media print {
+  @page { size: 13.333in 7.5in; margin: 0; }
+  html, body { background: #fff; }
+  .slide { display: block !important; position: relative; width: 13.333in; height: 7.5in; page-break-after: always; break-after: page; }
+  .notes { display: none !important; }
+}
+</style></head><body>
+<section class="slide dark" aria-label="Slide 1"><div class="inner"><div class="title-wrap"><p class="kicker">NLP + Deep Learning project</p>
+<h1>What drivers claim,<br>and what the car says</h1>
+<p class="sub">Understanding Formula 1 team radio, and checking it against telemetry</p></div></div><div class="num">1 / 16</div><aside class=notes>Open with the question: can a computer understand what F1 drivers claim over the radio, and does the car&#x27;s data back them up?</aside></section>
+<section class="slide light" aria-label="Slide 2"><div class="inner"><h2>One pipeline, six questions</h2>
+<div class="flow"><div class="step"><span class="n">1</span><b>Radio audio</b><small>14,370 clips, 45 h</small></div><div class="step"><span class="n">2</span><b>Speech → text</b><small>Whisper large-v3</small></div><div class="step"><span class="n">3</span><b>Who is speaking?</b><small>diarization + voice</small></div><div class="step"><span class="n">4</span><b>What is claimed?</b><small>DeBERTa fine-tuned</small></div><div class="step"><span class="n">5</span><b>Does the car agree?</b><small>telemetry rules + neural</small></div><div class="step"><span class="n">6</span><b>How aroused?</b><small>WavLM + text</small></div></div>
+<p class="lead">Example: <i>“No grip at the rear!”</i> → driver → <b>GRIP_DEG</b> → were the lap times actually dropping? → was the voice raised?</p></div><div class="num">2 / 16</div><aside class=notes>Walk left to right. Each box is a stage with its own checkpoint and pass/fail bar set in advance.</aside></section>
+<section class="slide light" aria-label="Slide 3"><div class="inner"><h2>Real data, real quirks</h2>
+<div class="stats">
+<div class="stat"><b>14,370</b><span>radio clips after de-duplication (2018–2025)</span></div>
+<div class="stat"><b>148</b><span>races of telemetry joined (FastF1)</span></div>
+<div class="stat"><b>82%</b><span>of “box box” calls stamped <i>after</i> the car entered the pits</span></div>
+</div>
+<ul class="list">
+<li>No 2022 season in the dataset; 2025 is thin (669 clips)</li>
+<li>204 byte-identical “Thank you.” clips reused across races: silent audio the original ASR hallucinated over</li>
+<li>Broadcast timestamps lag speech by ~30–60 s (about half a lap), so all windows are lap-level</li>
+</ul></div><div class="num">3 / 16</div><aside class=notes>These quirks were found by checking the data, not assumed. The timestamp lag is a finding in itself.</aside></section>
+<section class="slide light" aria-label="Slide 4"><div class="inner"><h2>Speech → text: prompting barely helps</h2>
+<div class="two"><div><p class="caption">Word error rate on 41 hand-transcribed clips (859 words)</p><div class="hbar"><span class="lab">Dataset transcripts (Cohere)</span><span class="track"><span class="fill" style="width:60%"></span></span><span class="val">30%</span></div><div class="hbar"><span class="lab">Whisper large-v3</span><span class="track"><span class="fill" style="width:60%"></span></span><span class="val">30%</span></div><div class="hbar"><span class="lab">Whisper + F1 vocabulary prompt</span><span class="track"><span class="fill" style="width:58%"></span></span><span class="val">29%</span></div></div>
+<div class="callout"><b>3%</b><span>relative WER improvement from prompting, vs the dataset's transcripts<br>(bar for adoption: 15%)</span>
+<p>Verdict: <strong>weak</strong>. Whisper is adapted by prompting only, never fine-tuned, and the WER check says the prompt isn't worth re-running.</p></div></div></div><div class="num">4 / 16</div><aside class=notes>Roughly 3 words in 10 are wrong on compressed radio. Errors propagate: &#x27;Enjoy one more tea guys&#x27; is an ASR error inside a misclassified utterance.</aside></section>
+<section class="slide light" aria-label="Slide 5"><div class="inner"><h2>Who is speaking? Voice beats words, but not enough</h2>
+<div class="two"><div><img src="img/fig1_attribution.png" alt="Attribution accuracy by method"></div>
+<div><div class="callout"><b>67%</b><span>accuracy, 95% CI 0.61–0.73<br>pre-set gate: 85%</span></div>
+<ul class="list"><li>Text cues alone: <b>39%</b>. Language can't tell driver from engineer</li>
+<li>Diarization wasn't the problem (only 4% mixed turns); naming the voice cluster was</li>
+<li>Annotator self-agreement: 90% on 20 repeats</li></ul>
+<p class="verdict bad">Failed its gate → downstream uses only <b>human-verified</b> driver turns</p></div></div></div><div class="num">5 / 16</div><aside class=notes>This is a negative result we chose to keep. We worked around it honestly by having the annotator flag non-driver turns.</aside></section>
+<section class="slide light" aria-label="Slide 6"><div class="inner"><h2>A claim taxonomy defined by the car's sensors</h2>
+<div class="chips"><div class="chip"><b>123</b>NO_CLAIM</div><div class="chip"><b>49</b>GRIP_DEG</div><div class="chip"><b>45</b>NO_SENSOR</div><div class="chip"><b>32</b>REL_PACE</div><div class="chip"><b>32</b>INCIDENT</div><div class="chip dim"><b>25</b>TRAFFIC</div><div class="chip dim"><b>11</b>POWER</div></div>
+<ul class="list"><li>Categories are what public telemetry <i>can</i> check: tyres, traffic, pace, incidents, power; plus NO_SENSOR and NO_CLAIM</li>
+<li>317 verified driver utterances; 133 sampled items were actually the engineer (an independent check on attribution)</li>
+<li>Classes under 30 labels (greyed) are dropped and tested in a sensitivity analysis; one annotator, so no κ</li></ul></div><div class="num">6 / 16</div><aside class=notes>The brief asked for 100 per class; with 317 labels only NO_CLAIM would survive, so we pre-stated 30 and report the 20 threshold as sensitivity.</aside></section>
+<section class="slide light" aria-label="Slide 7"><div class="inner"><h2>Main result: text identifies the claim</h2>
+<div class="two"><div><img src="img/fig2_t1_claims.png" alt="Claim classification, macro AUC-PR"></div>
+<div><table><tr><th>Split</th><th>DeBERTa</th><th>TF-IDF</th><th>Context</th><th>Chance<sub>95</sub></th></tr><tr><td>Race-grouped 5-fold CV</td><td>0.43</td><td>0.47</td><td>0.32</td><td class='muted'>0.24</td></tr><tr><td>Validation 2024</td><td>0.48</td><td>0.46</td><td>0.29</td><td class='muted'>0.35</td></tr><tr><td>Test 2025 (used once)</td><td>0.47</td><td>0.39</td><td>0.28</td><td class='muted'>0.42</td></tr><tr><td>Leave-one-driver-out</td><td>0.48</td><td>0.45</td><td>–</td><td class='muted'>0.25</td></tr></table>
+<p class="verdict good">DeBERTa beats context-only by <b>+0.11</b> (CI +0.04 to +0.18)</p>
+<p class="small">Holds on unseen drivers, so it learned claim language, not driver identity. Fine-tuned DeBERTa and TF-IDF are comparable at ~250 training examples. A local LLM zero-shot (Qwen2.5-1.5B, no training) scores 0.63.</p></div></div></div><div class="num">7 / 16</div><aside class=notes>Macro AUC-PR, the brief&#x27;s metric. Context-only uses lap, position, tyre age and gap with no words. The words add real information.</aside></section>
+<section class="slide light" aria-label="Slide 8"><div class="inner"><h2>Surprise: a small LLM, told the definitions, wins</h2>
+<div class="two"><div><p class="caption">Claim type, macro AUC-PR (same 281 items; chance 0.21)</p><div class="hbar"><span class="lab">Context only (no text)</span><span class="track"><span class="fill" style="width:45%"></span></span><span class="val">0.32</span></div><div class="hbar"><span class="lab">Fine-tuned DeBERTa</span><span class="track"><span class="fill" style="width:60%"></span></span><span class="val">0.43</span></div><div class="hbar"><span class="lab">TF-IDF</span><span class="track"><span class="fill" style="width:65%"></span></span><span class="val">0.47</span></div><div class="hbar"><span class="lab">LLM zero-shot (no training)</span><span class="track"><span class="fill" style="width:88%"></span></span><span class="val">0.63</span></div></div>
+<div class="callout"><b>+0.20</b><span>over fine-tuned DeBERTa (95% CI +0.12 to +0.27)</span>
+<p>Qwen2.5-1.5B-Instruct, run locally, sees only the category definitions from our annotation guide, with no labels and one prompt never tuned.
+With ~250 labels, <strong>stating</strong> what a category means beats <strong>learning</strong> it from examples.</p></div></div></div><div class="num">8 / 16</div><aside class=notes>This was a baseline the brief required, run exactly once. Leakage is impossible: the LLM never saw a label. The comparison is paired on identical items.</aside></section>
+<section class="slide light" aria-label="Slide 9"><div class="inner"><h2>Where it goes wrong, and why</h2>
+<div class="two wider-left"><div><img src="img/fig8_confusion.png" alt="Confusion matrices"></div>
+<div><ul class="list"><li>Incidents told as another driver's behaviour look like <b>pace</b> complaints</li>
+<li>Brake or balance complaints (unverifiable) look like <b>tyre</b> complaints</li><li>“have a bit of contacts, just keep an eye on things.” → predicted <b>GRIP_DEG</b>, truly <b>INCIDENT</b></li><li>“Alonso is moving over the place. understood, we&#x27;ll report.” → predicted <b>NO_CLAIM</b>, truly <b>INCIDENT</b></li></ul></div></div></div><div class="num">9 / 16</div><aside class=notes>The confusions are semantic and taxonomic, not random. Several errors trace back to ASR mistakes.</aside></section>
+<section class="slide light" aria-label="Slide 10"><div class="inner"><h2>Would more labels help the transformer?</h2>
+<div class="two wide-left"><div><img src="img/fig9_learning_curve.png" alt="Learning curve, DeBERTa vs TF-IDF"></div>
+<div><ul class="list"><li>Same race-grouped folds; training races subsampled to 25–100%</li>
+<li>At full data: DeBERTa 0.43 vs TF-IDF 0.47</li>
+<li>DeBERTa climbs twice as steeply, then flattens: no evidence it would overtake with modestly more labels</li>
+<li>Both stay well below the zero-shot LLM (0.63)</li></ul></div></div></div><div class="num">10 / 16</div><aside class=notes>Pre-declared contingency: because DeBERTa did not beat TF-IDF in CV, we committed in advance to a learning curve.</aside></section>
+<section class="slide light" aria-label="Slide 11"><div class="inner"><h2>Arousal is audible, and readable</h2>
+<div class="stats"><div class="stat"><b>0.44</b><span>Audio (WavLM features)</span></div><div class="stat"><b>0.49</b><span>Text</span></div><div class="stat"><b>0.50</b><span>Audio + text</span></div><div class="stat"><b>0.54</b><span>DeBERTa multi-task</span></div><div class="stat"><b>0.55</b><span>WavLM partial fine-tune</span></div></div>
+<p class="caption">Macro AUC-PR, race-grouped CV; chance ≈ 0.34</p>
+<ul class="list"><li>WavLM: lower 6 layers frozen, upper 6 fine-tuned with a learned layer weighting; highest weight on layer 10</li><li>Partial fine-tuning beats frozen features by <b>+0.11</b> (paired CI +0.03 to +0.19); holds on unseen drivers (0.51)</li><li>Fusing audio with text beats audio alone (+0.06)</li>
+<li>Caveat: the annotator could read the transcript, which may flatter the text models</li></ul></div><div class="num">11 / 16</div><aside class=notes>Called arousal, never stress: g-force, breathing and broadcast compression all raise vocal arousal.</aside></section>
+<section class="slide light" aria-label="Slide 12"><div class="inner"><h2>Does the car back up the claim? Not beyond chance</h2>
+<div class="two wide-left"><div><img src="img/fig5_t2_rules.png" alt="Telemetry consistency vs base rate and placebo"></div>
+<div><ul class="list"><li>Rules were fixed before any claim was labelled</li>
+<li>No claim type beats its base rate (all CIs include 0)</li>
+<li>Incident claims match race-control messages 2× the base rate, but <b>just as often 3 laps before</b> the message</li></ul>
+<p class="verdict bad">The placebo shows the broadcast picks eventful moments; that's not the driver's foresight</p></div></div></div><div class="num">12 / 16</div><aside class=notes>This is the negative control doing its job. Without the placebo we would have reported a misleading positive for incidents.</aside></section>
+<section class="slide light" aria-label="Slide 13"><div class="inner"><h2>Neural telemetry model: gated vs naive fusion</h2>
+<div class="two"><div><img src="img/fig6_t2_neural.png" alt="Neural T2 macro AUC-PR"></div>
+<div><ul class="list"><li>1-D CNN over car data + lap tokens; each claim type <b>queries</b> the telemetry by cross-attention, with a gate (constrained fusion)</li>
+<li>Gated 0.31 vs concat 0.30 vs context 0.29; chance 0.27</li>
+<li>Placebo (3 laps earlier): 0.31</li>
+<li>Gated − placebo: +0.00 (CI -0.05 to +0.05)</li></ul></div></div></div><div class="num">13 / 16</div></section>
+<section class="slide light" aria-label="Slide 14"><div class="inner"><h2>Does arousal change the next laps?</h2>
+<div class="two"><div><img src="img/fig7_t4.png" alt="Arousal effect vs minimum detectable effect"></div>
+<div><ul class="list"><li>Mixed model: residual over the next 3 laps on lagged arousal <b>probabilities</b>, controlling for the current lap</li>
+<li>Effect: +0.147 s (CI -0.02 to +0.31); minimum detectable ±0.26 s, computed <b>before</b> fitting</li>
+<li>Hand-label check: -0.005 s, so it doesn't even keep the direction</li>
+<li>No evidence drivers differ (heterogeneity p = 0.19)</li></ul>
+<p class="verdict bad">Null: effects under ~0.26 s/lap can't be detected with these data</p></div></div></div><div class="num">14 / 16</div><aside class=notes>Reported as a null with its minimum detectable effect, as the brief requires. No alternative specifications were tried after seeing the result.</aside></section>
+<section class="slide light" aria-label="Slide 15"><div class="inner"><h2>How we kept it honest</h2>
+<div class="grid3">
+<div class="card"><b>Pass/fail bars set in advance</b><span>Every stage had a threshold written down before its labels existed</span></div>
+<div class="card"><b>No leakage</b><span>Whole races in one fold; on 30 sets of random labels the models score exactly chance (0.499)</span></div>
+<div class="card"><b>Real chance levels</b><span>AUC-PR of random guessing is simulated, not assumed</span></div>
+<div class="card"><b>Unseen drivers</b><span>Leave-one-driver-out, crossed with race folds</span></div>
+<div class="card"><b>Negative control</b><span>Every telemetry test repeated 3 laps before the message</span></div>
+<div class="card"><b>No fabricated numbers</b><span>Every figure is regenerated from results/ by a script</span></div>
+</div></div><div class="num">15 / 16</div></section>
+<section class="slide dark" aria-label="Slide 16"><div class="inner"><h2>What holds up, and what doesn't</h2>
+<div class="two"><div class="col good"><h3>Holds up</h3><ul class="list">
+<li>Claim type is identifiable from speech, on every split</li>
+<li>A zero-shot LLM told the definitions beats fine-tuning (+0.20)</li>
+<li>WavLM partial fine-tuning lifts audio arousal (+0.11)</li>
+<li>Lap-time model works; timestamps lag speech ~30–60 s</li></ul></div>
+<div class="col bad"><h3>Doesn't (yet)</h3><ul class="list">
+<li>Speaker attribution: 67% vs 85% gate</li>
+<li>ASR prompting: ~3–4% WER gain vs a 15% bar</li>
+<li>Telemetry doesn't corroborate claims (placebo equal)</li>
+<li>Arousal doesn't detectably change pace (null)</li></ul></div></div>
+<p class="lead">Next: a second annotator, more rare-claim labels, and supervised attribution trained on our hand labels</p></div><div class="num">16 / 16</div></section>
+<script>
+const S=[...document.querySelectorAll('.slide')];let i=0;
+function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('active',k===i));history.replaceState(null,'','#'+(i+1));}
+document.addEventListener('keydown',ev=>{if(['ArrowRight','PageDown',' '].includes(ev.key)){ev.preventDefault();go(i+1)}
+if(['ArrowLeft','PageUp'].includes(ev.key)){ev.preventDefault();go(i-1)}if(ev.key==='n')document.body.classList.toggle('show-notes');});
+document.addEventListener('click',ev=>{if(!ev.target.closest('a'))go(ev.clientX>innerWidth/3?i+1:i-1)});
+go((parseInt(location.hash.slice(1))||1)-1);
+addEventListener('hashchange',()=>{const n=(parseInt(location.hash.slice(1))||1)-1;if(n!==i)go(n);});
+</script></body></html>

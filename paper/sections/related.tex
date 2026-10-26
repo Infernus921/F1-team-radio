@@ -1,0 +1,12 @@
+\section{Related Work}
+\label{sec:related}
+
+\textbf{Speech recognition and diarization.} Whisper~\cite{radford2023whisper} is trained on large-scale weakly supervised audio and transcribes noisy speech without task-specific training; its decoder can be conditioned on a text prompt, which we use as the only form of domain adaptation. Speaker diarization answers ``who spoke when'': pyannote~\cite{bredin2023pyannote,plaquet2023powerset} segments speech into speaker turns, and WeSpeaker~\cite{wang2023wespeaker} produces speaker embeddings. These tools separate voices but do not say which voice plays which role, so deciding driver versus engineer is left to us.
+
+\textbf{Text classification with few labels.} Transformer encoders~\cite{vaswani2017attention} such as DeBERTa-v3~\cite{he2023debertav3} are the usual choice for fine-tuned text classification, but they normally rely on thousands of labelled examples. Large language models can instead perform a task from instructions or a few examples in the prompt~\cite{brown2020gpt3}, and open instruction-tuned models such as Qwen2.5~\cite{qwen2025qwen25} make this possible on local hardware. Whether such zero-shot classification beats fine-tuning on a small, specialised taxonomy is an open empirical question that we test directly.
+
+\textbf{Speech representations and arousal.} Self-supervised speech encoders such as WavLM~\cite{chen2022wavlm} learn from unlabelled, noisy audio and transfer well to paralinguistic tasks; the SUPERB benchmark~\cite{yang2021superb} showed that a learned weighting over encoder layers outperforms any single layer. Following the circumplex model of affect~\cite{russell1980circumplex}, we model arousal (activation) rather than discrete emotion categories.
+
+\textbf{Claim verification and fusion.} Fact-verification work such as FEVER~\cite{thorne2018fever} checks written claims against textual evidence. We instead check spoken claims against a physical record, the car's telemetry. For combining text with time series, recent work argues for constrained fusion over naive concatenation~\cite{lee2026cfa}; we test a gated cross-attention model against concatenation.
+
+\textbf{Research practice.} Flexible analysis choices inflate false positives~\cite{simmons2011false}, and pre-registration~\cite{nosek2018prereg} addresses this by fixing decisions before results are seen. We follow this practice and add a reverse-time placebo, a negative control rarely used in NLP evaluation.

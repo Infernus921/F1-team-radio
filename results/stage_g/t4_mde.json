@@ -1,0 +1,24 @@
+{
+ "Y1": {
+  "n_laps": 1794,
+  "n_drivers": 33,
+  "sd_x_after_controls": 0.2047,
+  "resid_sd_s": 0.5606,
+  "design_effect": 2.023,
+  "mde_s_per_unit_x": 0.2576,
+  "mde_s_for_0_to_1_x": "same as above: x is a probability, so a unit is calm (0) -> aroused (1)",
+  "power": 0.8,
+  "alpha": 0.05
+ },
+ "Y2": {
+  "n_laps": 1902,
+  "n_drivers": 36,
+  "sd_x_after_controls": 0.2047,
+  "resid_sd_s": 0.3484,
+  "design_effect": 6.247,
+  "mde_s_per_unit_x": 0.2733,
+  "mde_s_for_0_to_1_x": "same as above: x is a probability, so a unit is calm (0) -> aroused (1)",
+  "power": 0.8,
+  "alpha": 0.05
+ }
+}

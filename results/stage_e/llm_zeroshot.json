@@ -1,0 +1,163 @@
+{
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "n": 281,
+ "classes": [
+  "GRIP_DEG",
+  "INCIDENT",
+  "NO_CLAIM",
+  "NO_SENSOR",
+  "REL_PACE"
+ ],
+ "metrics": {
+  "GRIP_DEG": {
+   "auc_pr": 0.7225,
+   "ci95": [
+    0.5883,
+    0.8451
+   ],
+   "prevalence": 0.1744,
+   "chance_auc_pr": 0.1876,
+   "chance_95pct": 0.2365,
+   "n_pos": 49
+  },
+  "INCIDENT": {
+   "auc_pr": 0.744,
+   "ci95": [
+    0.5892,
+    0.8698
+   ],
+   "prevalence": 0.1139,
+   "chance_auc_pr": 0.1315,
+   "chance_95pct": 0.1826,
+   "n_pos": 32
+  },
+  "NO_CLAIM": {
+   "auc_pr": 0.7078,
+   "ci95": [
+    0.6167,
+    0.7902
+   ],
+   "prevalence": 0.4377,
+   "chance_auc_pr": 0.446,
+   "chance_95pct": 0.4979,
+   "n_pos": 123
+  },
+  "NO_SENSOR": {
+   "auc_pr": 0.5648,
+   "ci95": [
+    0.4328,
+    0.6812
+   ],
+   "prevalence": 0.1601,
+   "chance_auc_pr": 0.1768,
+   "chance_95pct": 0.2205,
+   "n_pos": 45
+  },
+  "REL_PACE": {
+   "auc_pr": 0.4064,
+   "ci95": [
+    0.2657,
+    0.5886
+   ],
+   "prevalence": 0.1139,
+   "chance_auc_pr": 0.1316,
+   "chance_95pct": 0.1837,
+   "n_pos": 32
+  },
+  "macro": {
+   "auc_pr": 0.6291,
+   "ci95": [
+    0.5782,
+    0.6906
+   ],
+   "no_skill": 0.2,
+   "chance_auc_pr": 0.2147,
+   "chance_95pct": 0.2365
+  }
+ },
+ "accuracy_argmax": 0.6192,
+ "paired_vs_cv5_oof": {
+  "llm_minus_deberta": {
+   "delta_macro_auc_pr": 0.2033,
+   "ci95": [
+    0.1178,
+    0.2711
+   ],
+   "p_a_not_better": 0.0
+  },
+  "llm_minus_tfidf": {
+   "delta_macro_auc_pr": 0.1635,
+   "ci95": [
+    0.0883,
+    0.2297
+   ],
+   "p_a_not_better": 0.0
+  },
+  "llm_minus_context": {
+   "delta_macro_auc_pr": 0.3088,
+   "ci95": [
+    0.232,
+    0.3717
+   ],
+   "p_a_not_better": 0.0
+  }
+ },
+ "per_class": {
+  "GRIP_DEG": {
+   "auc_pr": 0.7225,
+   "ci95": [
+    0.5883,
+    0.8451
+   ],
+   "prevalence": 0.1744,
+   "chance_auc_pr": 0.1876,
+   "chance_95pct": 0.2365,
+   "n_pos": 49
+  },
+  "INCIDENT": {
+   "auc_pr": 0.744,
+   "ci95": [
+    0.5892,
+    0.8698
+   ],
+   "prevalence": 0.1139,
+   "chance_auc_pr": 0.1315,
+   "chance_95pct": 0.1826,
+   "n_pos": 32
+  },
+  "NO_CLAIM": {
+   "auc_pr": 0.7078,
+   "ci95": [
+    0.6167,
+    0.7902
+   ],
+   "prevalence": 0.4377,
+   "chance_auc_pr": 0.446,
+   "chance_95pct": 0.4979,
+   "n_pos": 123
+  },
+  "NO_SENSOR": {
+   "auc_pr": 0.5648,
+   "ci95": [
+    0.4328,
+    0.6812
+   ],
+   "prevalence": 0.1601,
+   "chance_auc_pr": 0.1768,
+   "chance_95pct": 0.2205,
+   "n_pos": 45
+  },
+  "REL_PACE": {
+   "auc_pr": 0.4064,
+   "ci95": [
+    0.2657,
+    0.5886
+   ],
+   "prevalence": 0.1139,
+   "chance_auc_pr": 0.1316,
+   "chance_95pct": 0.1837,
+   "n_pos": 32
+  }
+ },
+ "note": "One prompt, written once from labels/ANNOTATION_GUIDE.md definitions, run once; no prompt tuning."
+}

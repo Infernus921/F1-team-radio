@@ -1,0 +1,29 @@
+# Data and audio: F1 audio is copyrighted; coursework use only, never commit or redistribute.
+data/
+*.mp3
+*.wav
+*.flac
+labels/audio/
+# Hand labels are small and are research artefacts, so they ARE committed (labels/*.csv).
+
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+*.log
+.env
+hf_token*
+
+# code-only submission archive (built from git)
+F1_radio_code.zip
+
+# downloaded reference PDFs (kept locally; list in references/README.md)
+references/*.pdf
+
+# slide renders used for visual QA
+reports/pptx_render/
+
+# clean submission export
+submission/
+final.pptx

@@ -1,0 +1,298 @@
+{
+ "annotators": [
+  "A1"
+ ],
+ "n_labelled_main": 360,
+ "label_rates": {
+  "ENGINEER": 0.483,
+  "DRIVER": 0.433,
+  "MIXED": 0.044,
+  "UNSURE": 0.025,
+  "NOSPEECH": 0.014
+ },
+ "label_counts": {
+  "ENGINEER": 174,
+  "DRIVER": 156,
+  "MIXED": 16,
+  "UNSURE": 9,
+  "NOSPEECH": 5
+ },
+ "n_evaluable": 330,
+ "gate": 0.85,
+ "test_retest": {
+  "n": 20,
+  "agreement": 0.9
+ },
+ "systems": {
+  "ensemble_silk (primary; both-roles constraint)": {
+   "accuracy": 0.6697,
+   "ci95_race_bootstrap": [
+    0.6104,
+    0.7258
+   ],
+   "season_reweighted_accuracy": 0.6821,
+   "recall": {
+    "DRIVER": 0.5641,
+    "ENGINEER": 0.7644
+   },
+   "per_season": {
+    "2018": {
+     "acc": 0.729,
+     "n": 48
+    },
+    "2019": {
+     "acc": 0.766,
+     "n": 47
+    },
+    "2020": {
+     "acc": 0.723,
+     "n": 47
+    },
+    "2021": {
+     "acc": 0.717,
+     "n": 46
+    },
+    "2023": {
+     "acc": 0.609,
+     "n": 46
+    },
+    "2024": {
+     "acc": 0.638,
+     "n": 47
+    },
+    "2025": {
+     "acc": 0.51,
+     "n": 49
+    }
+   },
+   "unattributed_share": 0.051515151515151514,
+   "passes_gate_point_estimate": false,
+   "ci_entirely_above_gate": false
+  },
+  "ensemble_silk_raw (original naming rule)": {
+   "accuracy": 0.6758,
+   "ci95_race_bootstrap": [
+    0.6231,
+    0.7273
+   ],
+   "season_reweighted_accuracy": 0.6873,
+   "recall": {
+    "DRIVER": 0.5064,
+    "ENGINEER": 0.8276
+   },
+   "per_season": {
+    "2018": {
+     "acc": 0.729,
+     "n": 48
+    },
+    "2019": {
+     "acc": 0.723,
+     "n": 47
+    },
+    "2020": {
+     "acc": 0.766,
+     "n": 47
+    },
+    "2021": {
+     "acc": 0.717,
+     "n": 46
+    },
+    "2023": {
+     "acc": 0.609,
+     "n": 46
+    },
+    "2024": {
+     "acc": 0.66,
+     "n": 47
+    },
+    "2025": {
+     "acc": 0.531,
+     "n": 49
+    }
+   },
+   "unattributed_share": 0.051515151515151514,
+   "passes_gate_point_estimate": false,
+   "ci_entirely_above_gate": false
+  },
+  "ensemble_k2 (brief's literal k=2)": {
+   "accuracy": 0.5152,
+   "ci95_race_bootstrap": [
+    0.4581,
+    0.5733
+   ],
+   "season_reweighted_accuracy": 0.5154,
+   "recall": {
+    "DRIVER": 0.7436,
+    "ENGINEER": 0.3103
+   },
+   "per_season": {
+    "2018": {
+     "acc": 0.583,
+     "n": 48
+    },
+    "2019": {
+     "acc": 0.468,
+     "n": 47
+    },
+    "2020": {
+     "acc": 0.511,
+     "n": 47
+    },
+    "2021": {
+     "acc": 0.543,
+     "n": 46
+    },
+    "2023": {
+     "acc": 0.522,
+     "n": 46
+    },
+    "2024": {
+     "acc": 0.489,
+     "n": 47
+    },
+    "2025": {
+     "acc": 0.49,
+     "n": 49
+    }
+   },
+   "unattributed_share": 0.051515151515151514,
+   "passes_gate_point_estimate": false,
+   "ci_entirely_above_gate": false
+  },
+  "voice_only_silk": {
+   "accuracy": 0.6455,
+   "ci95_race_bootstrap": [
+    0.5846,
+    0.6984
+   ],
+   "season_reweighted_accuracy": 0.6564,
+   "recall": {
+    "DRIVER": 0.5192,
+    "ENGINEER": 0.7586
+   },
+   "per_season": {
+    "2018": {
+     "acc": 0.667,
+     "n": 48
+    },
+    "2019": {
+     "acc": 0.787,
+     "n": 47
+    },
+    "2020": {
+     "acc": 0.681,
+     "n": 47
+    },
+    "2021": {
+     "acc": 0.696,
+     "n": 46
+    },
+    "2023": {
+     "acc": 0.587,
+     "n": 46
+    },
+    "2024": {
+     "acc": 0.596,
+     "n": 47
+    },
+    "2025": {
+     "acc": 0.51,
+     "n": 49
+    }
+   },
+   "unattributed_share": null,
+   "passes_gate_point_estimate": false,
+   "ci_entirely_above_gate": false
+  },
+  "voice_only_k2": {
+   "accuracy": 0.4939,
+   "ci95_race_bootstrap": [
+    0.4367,
+    0.5503
+   ],
+   "season_reweighted_accuracy": 0.4906,
+   "recall": {
+    "DRIVER": 0.7051,
+    "ENGINEER": 0.3046
+   },
+   "per_season": {
+    "2018": {
+     "acc": 0.562,
+     "n": 48
+    },
+    "2019": {
+     "acc": 0.468,
+     "n": 47
+    },
+    "2020": {
+     "acc": 0.468,
+     "n": 47
+    },
+    "2021": {
+     "acc": 0.5,
+     "n": 46
+    },
+    "2023": {
+     "acc": 0.522,
+     "n": 46
+    },
+    "2024": {
+     "acc": 0.447,
+     "n": 47
+    },
+    "2025": {
+     "acc": 0.49,
+     "n": 49
+    }
+   },
+   "unattributed_share": null,
+   "passes_gate_point_estimate": false,
+   "ci_entirely_above_gate": false
+  },
+  "text_only": {
+   "accuracy": 0.3909,
+   "ci95_race_bootstrap": [
+    0.3442,
+    0.4458
+   ],
+   "season_reweighted_accuracy": 0.3836,
+   "recall": {
+    "DRIVER": 0.4295,
+    "ENGINEER": 0.3563
+   },
+   "per_season": {
+    "2018": {
+     "acc": 0.417,
+     "n": 48
+    },
+    "2019": {
+     "acc": 0.468,
+     "n": 47
+    },
+    "2020": {
+     "acc": 0.426,
+     "n": 47
+    },
+    "2021": {
+     "acc": 0.348,
+     "n": 46
+    },
+    "2023": {
+     "acc": 0.37,
+     "n": 46
+    },
+    "2024": {
+     "acc": 0.319,
+     "n": 47
+    },
+    "2025": {
+     "acc": 0.388,
+     "n": 49
+    }
+   },
+   "unattributed_share": null,
+   "passes_gate_point_estimate": false,
+   "ci_entirely_above_gate": false
+  }
+ }
+}

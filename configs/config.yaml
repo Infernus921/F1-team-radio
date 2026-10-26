@@ -1,0 +1,34 @@
+# Single source of configuration for the whole pipeline.
+seed: 1337
+
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+  results: results
+  figures: reports/figures
+  labels: labels
+
+dataset:
+  hf_id: MikCil/f1-team-radio
+  sample_rate: 16000
+
+splits:
+  # Primary: chronological, grouped by race_id.
+  train_years: [2018, 2019, 2020, 2021, 2022, 2023]
+  val_years: [2024]
+  test_years: [2025]
+  # Secondary: grouped K-fold over races.
+  n_group_folds: 5
+  # Third: leave-one-driver-out over the top-N drivers by message count.
+  lodo_top_n: 8
+
+stage_a:
+  diarization_model: pyannote/speaker-diarization-community-1
+  embedding_model: pyannote/wespeaker-voxceleb-resnet34-LM
+  # batch 4 keeps pyannote in real VRAM on the 8 GB card: 65x realtime vs 2x at the default 32,
+  # identical output (DER 0.0000 vs default on 40 clips; scripts/bench_diar_batch.py)
+  diarization_batch_size: 4
+  min_segment_s: 0.5          # shorter diarized turns are too short for a stable embedding
+  n_label: 300                # hand-labelled utterances for attribution accuracy
+  accuracy_gate: 0.85         # checkpoint 1 threshold from the brief

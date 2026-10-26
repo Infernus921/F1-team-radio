@@ -1,0 +1,13 @@
+kind,item_id,gold,pred,p_gold,text
+confident_correct,C0357,NO_CLAIM,NO_CLAIM,0.876,"great guys, P7, again, good comeback."
+confident_correct,C0296,NO_CLAIM,NO_CLAIM,0.873,no worries. Thanks guys. Good points. Absolutely. in lap was fun.
+confident_correct,C0448,NO_CLAIM,NO_CLAIM,0.871,"well done everyone. I think that was the best I could have done today, so thank you, well done on the strategy. Worked out nicely, and yeah, great points for the team, so thank you, and enjoy"
+confident_correct,C0212,NO_CLAIM,NO_CLAIM,0.864,"Yes, unbelievable. Really well done with the strategy, guys. That was awesome. Thank you very much. You keep staying in it. That was a very lovely race. You take that one. Great job, everyone."
+confident_correct,C0052,NO_CLAIM,NO_CLAIM,0.857,it was a solid race guys tried We tried
+confident_correct,C0372,NO_CLAIM,NO_CLAIM,0.835,"Yeah, guys, really close, but yeah, we'll do it next time."
+confident_wrong,C0153,INCIDENT,GRIP_DEG,0.007,"have a bit of contacts, just keep an eye on things."
+confident_wrong,C0106,INCIDENT,NO_CLAIM,0.01,"Alonso is moving over the place. understood, we'll report."
+confident_wrong,C0058,INCIDENT,NO_CLAIM,0.016,is the penalty? What's the thing?
+confident_wrong,C0407,REL_PACE,NO_CLAIM,0.022,"Enjoy one more tea guys, doesn't feel too fast."
+confident_wrong,C0264,REL_PACE,GRIP_DEG,0.024,"could try to hold this, it's on a knife edge, but I think I could manage this pace. understood."
+confident_wrong,C0076,REL_PACE,GRIP_DEG,0.031,"really like some info on where I'm slowing. 8, 9. And 13, 14. Okay, but how much? Yeah, I'll tell you. Yeah, 1 tenth, 8 and 9."

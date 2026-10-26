@@ -1,0 +1,13 @@
+\section{Introduction}
+\label{sec:intro}
+
+Formula~1 team radio consists of brief, loud, jargon-filled communications exchanged between a driver and the pit wall at 300\, km/h. Drivers lodge complaints (``no traction at the back'', ``he shoved me off'', ``I've lost power'') that the vehicle's sensors can occasionally verify. That makes the domain a natural testbed for spoken language understanding grounded in an independent signal: we can ask not only what was said, but whether the telemetry at that moment is consistent with it.
+
+We study four tasks: (T1) classifying the type of a driver's claim; (T2) testing whether telemetry is consistent with it; (T3) estimating vocal arousal from text and audio; and (T4) testing whether arousal predicts subsequent lap performance. Doing this on public broadcast data requires solving problems that are easy to under-estimate. Each recording mixes the driver's and engineer's voices without turn markers. Off-the-shelf ASR mangles the domain vocabulary. Broadcast timestamps lag the speech. And the broadcaster chooses which messages air, which can manufacture apparent predictive signal.
+
+Our contributions are:
+\begin{itemize}
+\item An end-to-end pipeline over 14{,}370 clips and 148 races of telemetry, with race-grouped and driver-held-out evaluation, a reverse-time placebo, and analysis choices fixed before the relevant labels existed.
+\item Transfer-learning choices matched to each model's data budget: \emph{full} fine-tuning of a text encoder with a shared multi-task trunk, \emph{partial} fine-tuning of a speech encoder with a learned layer weighting, and \emph{no} fine-tuning of the ASR model, which is adapted only through prompting and verified by WER.
+\item Empirical findings, positive and negative: text identifies claim types well above a context-only baseline, and with $\sim$250 labels a small zero-shot LLM given the category definitions outperforms both a fine-tuned transformer and TF-IDF; partial fine-tuning of WavLM substantially improves audio arousal; voice beats text for speaker attribution, yet attribution falls short of its pre-registered gate; prompting reduces WER only marginally; broadcast timestamps lag speech by roughly half a lap; and telemetry does not corroborate claims once a reverse-time placebo is applied.
+\end{itemize}

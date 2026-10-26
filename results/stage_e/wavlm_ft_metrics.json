@@ -1,0 +1,134 @@
+{
+ "setup": {
+  "model": "microsoft/wavlm-base-plus",
+  "frozen_layers": 6,
+  "trained_layers": 6,
+  "epochs": 6,
+  "max_s": 8.0,
+  "batch": 8
+ },
+ "protocols": {
+  "cv5": {
+   "n": 317,
+   "metrics": {
+    "1": {
+     "auc_pr": 0.7078,
+     "ci95": [
+      0.6328,
+      0.7777
+     ],
+     "prevalence": 0.4984,
+     "chance_auc_pr": 0.5045,
+     "chance_95pct": 0.552,
+     "n_pos": 158
+    },
+    "2": {
+     "auc_pr": 0.5067,
+     "ci95": [
+      0.4275,
+      0.6037
+     ],
+     "prevalence": 0.3975,
+     "chance_auc_pr": 0.4096,
+     "chance_95pct": 0.4507,
+     "n_pos": 126
+    },
+    "3": {
+     "auc_pr": 0.4482,
+     "ci95": [
+      0.2955,
+      0.6081
+     ],
+     "prevalence": 0.1041,
+     "chance_auc_pr": 0.1197,
+     "chance_95pct": 0.1734,
+     "n_pos": 33
+    },
+    "macro": {
+     "auc_pr": 0.5542,
+     "ci95": [
+      0.4945,
+      0.6241
+     ],
+     "no_skill": 0.3333,
+     "chance_auc_pr": 0.3446,
+     "chance_95pct": 0.3694
+    }
+   },
+   "learned_layer_weights_mean": {
+    "layer_7": 0.1516,
+    "layer_8": 0.1549,
+    "layer_9": 0.167,
+    "layer_10": 0.1821,
+    "layer_11": 0.1788,
+    "layer_12": 0.1656
+   },
+   "note_ablation": "see results/stage_e/arousal_metrics.json cv5.audio for the frozen-feature model"
+  },
+  "lodo": {
+   "n": 188,
+   "metrics": {
+    "1": {
+     "auc_pr": 0.6163,
+     "ci95": [
+      0.5402,
+      0.7138
+     ],
+     "prevalence": 0.5213,
+     "chance_auc_pr": 0.5304,
+     "chance_95pct": 0.5932,
+     "n_pos": 98
+    },
+    "2": {
+     "auc_pr": 0.4213,
+     "ci95": [
+      0.3248,
+      0.5388
+     ],
+     "prevalence": 0.3883,
+     "chance_auc_pr": 0.4022,
+     "chance_95pct": 0.463,
+     "n_pos": 73
+    },
+    "3": {
+     "auc_pr": 0.5006,
+     "ci95": [
+      0.2552,
+      0.7348
+     ],
+     "prevalence": 0.0904,
+     "chance_auc_pr": 0.1135,
+     "chance_95pct": 0.1761,
+     "n_pos": 17
+    },
+    "macro": {
+     "auc_pr": 0.5127,
+     "ci95": [
+      0.4224,
+      0.6116
+     ],
+     "no_skill": 0.3333,
+     "chance_auc_pr": 0.3487,
+     "chance_95pct": 0.3837
+    }
+   },
+   "learned_layer_weights_mean": {
+    "layer_7": 0.151,
+    "layer_8": 0.1541,
+    "layer_9": 0.167,
+    "layer_10": 0.1824,
+    "layer_11": 0.1795,
+    "layer_12": 0.1659
+   },
+   "note_ablation": "see results/stage_e/arousal_metrics.json cv5.audio for the frozen-feature model"
+  }
+ },
+ "full_fit_layer_weights": {
+  "layer_7": 0.1504,
+  "layer_8": 0.1525,
+  "layer_9": 0.1612,
+  "layer_10": 0.184,
+  "layer_11": 0.1826,
+  "layer_12": 0.1694
+ }
+}

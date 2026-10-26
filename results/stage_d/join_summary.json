@@ -1,0 +1,33 @@
+{
+ "n_clips": 14370,
+ "phase_counts": {
+  "race": 10229,
+  "post_race": 2161,
+  "pre_race": 1826,
+  "no_laps": 154
+ },
+ "phase_share_where_laps_exist": {
+  "race": 0.72,
+  "post_race": 0.152,
+  "pre_race": 0.128
+ },
+ "pre_race_minutes_before_start_quantiles": {
+  "0.1": 2.9,
+  "0.5": 21.9,
+  "0.9": 46.0
+ },
+ "post_race_minutes_after_end_quantiles": {
+  "0.1": 1.6,
+  "0.5": 3.5,
+  "0.9": 7.9
+ },
+ "race_phase_by_year": {
+  "2018": 1045,
+  "2019": 1438,
+  "2020": 1547,
+  "2021": 2038,
+  "2023": 1835,
+  "2024": 1795,
+  "2025": 531
+ }
+}
